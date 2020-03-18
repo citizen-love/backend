@@ -1,0 +1,48 @@
+{
+  "name": "citizen-love-serverless",
+  "version": "1.0.0",
+  "apiVersion": "v0.1",
+  "description": "Collection of google functions used at Citizen Love",
+  "main": "functions.js",
+  "scripts": {
+    "package": "webpack",
+    "start": "cd .webpack && functions-framework --target=api",
+    "dev": "cross-env NODE_ENV=local TEST_MODE=true jest --verbose --colors --watch",
+    "test:all": "cross-env NODE_ENV=local TEST_MODE=true jest --verbose --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/citizen-love/backend"
+  },
+  "dependencies": {
+    "axios": "0.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "firebase-admin": "8.7.0",
+    "firebase-functions": "3.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@google-cloud/functions-framework": "^1.5.0",
+    "babel-eslint": "10.0.3",
+    "babel-loader": "8.0.6",
+    "cross-env": "6.0.3",
+    "eslint": "6.6.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-promise": "4.2.1",
+    "path": "0.12.7",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.10",
+    "webpack-node-externals": "1.7.2"
+  },
+  "author": "Citizen-love",
+  "license": "ISC",
+  "engines": {
+    "node": "8"
+  },
+  "bugs": {
+    "url": "https://github.com/citizen-love/backend/issues"
+  },
+  "homepage": "https://github.com/citizen-love/backend#readme"
+}
