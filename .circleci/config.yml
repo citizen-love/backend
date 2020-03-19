@@ -16,6 +16,9 @@ jobs:
           name: Package application
           command: "npm run package"
       - run:
+          name: Copy config to build
+          command: "cp package.json ./.webpack/package.json"
+      - run:
           name: Deploy backend application
           command: 'firebase deploy --only functions --token "$FIREBASE_TOKEN"'
 
