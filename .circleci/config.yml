@@ -1,0 +1,26 @@
+version: 2.1
+jobs:
+
+  build-functions:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: Update NPM
+          command: "sudo npm install -g npm@latest firebase-tools"
+      - run:
+          name: Package application
+          command: "npm install"
+      - run:
+          name: Deploy backend application
+          command: 'firebase deploy --only functions --token "$FIREBASE_TOKEN"'
+
+workflows:
+  version: 2
+  deploy:
+    jobs: 
+    - build-functions:
+        filters:
+          branches:
+            only: dev
