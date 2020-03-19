@@ -1,3 +1,3 @@
-export const CONTACT_INFORMATION = '/contact-information';
-export const STATUS_SINGLE = '/status/:trackingId';
-export const OFFER = '/offer';
+export const REQUESTER_CONTACT = '/requester-contact';
+export const HELP_STATUS = '/help-status/:helpStatusId';
+export const HELP_OFFER = '/help-offer/:helpRequestId';
