@@ -23,4 +23,4 @@ workflows:
     - build-functions:
         filters:
           branches:
-            only: dev
+            only: master
