@@ -13,9 +13,6 @@ import {
 } from './src/routes';
 
 const functions = require('firebase-functions');
-const admin = require('firebase-admin');
-
-admin.initializeApp();
 
 const app = express();
 

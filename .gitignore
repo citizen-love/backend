@@ -1,4 +1,5 @@
 node_modules
+admin-sdk.json
 .webpack
 .gcloud
 package-lock.json
