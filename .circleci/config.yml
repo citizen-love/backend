@@ -10,8 +10,11 @@ jobs:
           name: Update NPM
           command: "sudo npm install -g npm@latest firebase-tools"
       - run:
-          name: Package application
+          name: Install dependencies
           command: "npm install"
+      - run:
+          name: Package application
+          command: "npm run package"
       - run:
           name: Deploy backend application
           command: 'firebase deploy --only functions --token "$FIREBASE_TOKEN"'
