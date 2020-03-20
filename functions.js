@@ -26,5 +26,4 @@ app.post(HELP_REQUEST_STATUS, updateHelpStatus);
 
 app.post(HELP_OFFER, createOffer);
 
-
 exports.api = functions.https.onRequest(app);

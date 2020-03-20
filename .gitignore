@@ -1,6 +1,7 @@
 node_modules
 admin-sdk.json
 .webpack
+.env
 .gcloud
 package-lock.json
 yarn.lock

@@ -1,6 +1,6 @@
 import { param } from 'express-validator';
 import { collections } from '../../constants/constants';
-import { firebase } from '../../services/services';
+import { firebase, fbOps } from '../../services/services';
 import { validateSchema } from '../../utils/utils';
 
 const validations = [
@@ -20,12 +20,10 @@ const handler = async ({ params: {
   const { database } = firebase;
   try {
 
-    const contactSnapshot = await database.collection(collections.REQUESTER_CONTACT).doc(helpStatusId).get();
-    const contactData = contactSnapshot.data();
+    const contactData = await fbOps.get(database.collection(collections.REQUESTER_CONTACT).doc(helpStatusId));
 
     if (contactData) {
-      const helpRequestSnapshot = await database.collection(collections.HELP_REQUEST).doc(contactData.helpRequestId).get();
-      const helpRequestData = helpRequestSnapshot.data();
+      const helpRequestData = await fbOps.get(database.collection(collections.HELP_REQUEST).doc(contactData.helpRequestId));
       return res.status(200).send({ ...contactData, ...helpRequestData });
     }
     return res.status(404).send('');

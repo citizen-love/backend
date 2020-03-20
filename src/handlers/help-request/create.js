@@ -2,7 +2,7 @@ import uuid from 'uuid-random';
 import { body } from 'express-validator';
 
 import { collections } from '../../constants/constants';
-import { firebase } from '../../services/services';
+import { firebase, fbOps, emailService } from '../../services/services';
 import { validateSchema } from '../../utils/utils';
 
 const validations = [
@@ -24,19 +24,30 @@ const handler = async ({ body: {
   phone, category, customCategory
 } }, res) => {
   const { database } = firebase;
-  const publicInformation = { title, description, country, community, location, category, customCategory };
-  const privateInformation = { email, phone };
   try {
     const helpRequest = database.collection(collections.HELP_REQUEST).doc();
-    await helpRequest.set({
-      ...publicInformation,
-      createdAt: new Date(),
-      counter: 0
-    });
+    const requesterContact = database.collection(collections.REQUESTER_CONTACT).doc(uuid());
 
-    await database.collection(collections.REQUESTER_CONTACT).doc(uuid()).set({
-      ...privateInformation,
-      helpRequestId: helpRequest.id
+    const helpRequestInformation = {
+      title,
+      description,
+      country,
+      community,
+      location,
+      category,
+      customCategory,
+      createdAt: new Date(),
+      counter: 0,
+      status: 'started' };
+    const requesterContactInformation = { email, phone, helpRequestId: helpRequest.id };
+
+
+    await fbOps.create(helpRequest, helpRequestInformation);
+    await fbOps.create(requesterContact, requesterContactInformation);
+
+    await emailService.sendEmail({
+      receiver: requesterContactInformation.email,
+      templateId: emailService.templateIds.confirmation
     });
     return res.status(200).send({ id: helpRequest.id });
   } catch (err) {
