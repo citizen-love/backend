@@ -16,8 +16,6 @@ const getVariables = (countryCode, templateID) => {
 };
 
 const sendEmail = async ({ receiver, templateId }, variables = {}) => {
-  console.log('<<< EMAIL VARIABLES >>>');
-  console.log(variables);
   const emailData = {
     from: { email: CITIZEN_SENDER },
     personalizations: [{
