@@ -1,8 +1,17 @@
 {
-    "confirmation": {
-      "emailSubject": "FR CONFIRMATION SUBJECT"
-    },
-    "helpNotification": {
-      "emailSubject": "FR HELP NOTIFICATION SUBJECT"
-    }
+  "confirmation": {
+    "titleLine1": "Thank You",
+    "titleLine2": "for asking a",
+    "titleLine3": "citizen!",
+    "bodyLine1": "Dear Friend",
+    "bodyLine2": "Your help request was well noted. Now many of volunteers will see it based on your location. You will be contacted by us via email, once we find a match.",
+    "buttonText": "Track your request",
+    "socialMediaReference": "Our mission works, if all of us using it. Spread the word, and tell others about us.",
+    "closingLine": "Stay home, stay healthy and wash your hands!",
+    "signature1": "Best regards",
+    "signature2": "A responsible citizen"
+  },
+  "helpNotification": {
+    "emailSubject": "EN HELP NOTIFICATION SUBJECT"
   }
+}

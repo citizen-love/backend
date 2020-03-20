@@ -7,6 +7,7 @@ import { validateSchema } from '../../utils/utils';
 
 const ALLOWED_LANGUAGES = ['en', 'de', 'fr', 'it', 'ru_CH'];
 const EMAIL_TEMPLATE_ID = 'confirmation';
+const getUniqueURL = hash => `https://citizen.love/my-request/${hash}`;
 
 const validations = [
   body('title').exists().isString(),
@@ -53,7 +54,7 @@ const handler = async ({ body: {
 
     const emailVariables = {
       ...emailService.getVariables(language, EMAIL_TEMPLATE_ID),
-      uniqueIdentifier
+      trackingURL: getUniqueURL(uniqueIdentifier)
     };
 
     await emailService.sendEmail({
