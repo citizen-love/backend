@@ -25,7 +25,7 @@ const validations = [
 const handler = async ({ body: {
   title, description, country, language,
   community, location, email,
-  phone, category, customCategory
+  phone = '', category, customCategory = ''
 } }, res) => {
   const { database } = firebase;
   try {
