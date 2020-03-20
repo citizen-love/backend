@@ -1,3 +1,8 @@
 {
-    "myFirstEmailHeading": "Das ist echt cool!"
-}
+    "confirmation": {
+      "emailSubject": "DE CONFIRMATION SUBJECT"
+    },
+    "helpNotification": {
+      "emailSubject": "DE HELP NOTIFICATION SUBJECT"
+    }
+  }

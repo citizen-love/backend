@@ -9,11 +9,15 @@ const templateIds = {
 };
 
 
-const getVariables = (countryCode, templateID) => ({
-  variableKey: 'variableValue'
-});
+const getVariables = (countryCode, templateID) => {
+  // eslint-disable-next-line import/no-dynamic-require
+  const locale = require(`../../locales/${countryCode}.json`);
+  return locale[templateID];
+};
 
 const sendEmail = async ({ receiver, templateId }, variables = {}) => {
+  console.log('<<< EMAIL VARIABLES >>>');
+  console.log(variables);
   const emailData = {
     from: { email: CITIZEN_SENDER },
     personalizations: [{

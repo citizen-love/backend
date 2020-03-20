@@ -3,6 +3,8 @@ import { collections } from '../../constants/constants';
 import { firebase, fbOps, emailService } from '../../services/services';
 import { validateSchema } from '../../utils/utils';
 
+const EMAIL_TEMPLATE_ID = 'helpNotification';
+
 const validations = [
   param('helpRequestId')
     .exists()
@@ -26,10 +28,20 @@ const handler = async (
     );
 
     if (contactDetails[0]) {
+
+      const { language } = await fbOps.get(
+        database.collection(collections.HELP_REQUEST).doc(helpRequestId)
+      );
+
+      const emailVariables = {
+        ...emailService.getVariables(language, EMAIL_TEMPLATE_ID),
+        offerBody
+      };
+
       await emailService.sendEmail({
         receiver: contactDetails[0].email,
-        templateId: emailService.templateIds.helpNotification
-      });
+        templateId: emailService.templateIds[EMAIL_TEMPLATE_ID]
+      }, emailVariables);
       await fbOps.update(
         database.collection(collections.HELP_REQUEST).doc(helpRequestId),
         { counter: incrementField(1) }

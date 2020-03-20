@@ -1,0 +1,8 @@
+{
+    "confirmation": {
+      "emailSubject": "IT CONFIRMATION SUBJECT"
+    },
+    "helpNotification": {
+      "emailSubject": "IT HELP NOTIFICATION SUBJECT"
+    }
+  }

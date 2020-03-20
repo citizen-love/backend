@@ -1,0 +1,8 @@
+{
+    "confirmation": {
+      "emailSubject": "RU-CH CONFIRMATION SUBJECT"
+    },
+    "helpNotification": {
+      "emailSubject": "RU-CH HELP NOTIFICATION SUBJECT"
+    }
+  }

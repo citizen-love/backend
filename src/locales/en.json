@@ -1,3 +1,13 @@
 {
-  "myFirstEmailHeading": "This is some awesome shizzle!"
+  "confirmation": {
+    "subject": "EN CONFIRMATION SUBJECT",
+    "preHeader": "pre-header-english-text",
+    "title": "title-english-text",
+    "firstBlock": "first-block-english-text",
+    "buttonText": "button-english-text",
+    "secondBlock":"second-block-english-text"
+  },
+  "helpNotification": {
+    "emailSubject": "EN HELP NOTIFICATION SUBJECT"
+  }
 }
