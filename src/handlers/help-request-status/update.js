@@ -1,6 +1,7 @@
 import { param, body } from 'express-validator';
 import { collections } from '../../constants/constants';
-import { database } from '../../services/services';
+import { firebase } from '../../services/services';
+import { validateSchema } from '../../utils/utils';
 
 const validations = [
   param('helpStatusId')
@@ -13,20 +14,21 @@ const validations = [
   body('status').exists().custom(val => {
     const allowedStatuses = ['completed', 'started', 'cancelled'];
 
-    return !allowedStatuses.includes(val);
-  })
+    return allowedStatuses.includes(val);
+  }),
+  validateSchema
 ];
 
 const handler = async ({ body: { status }, params: { helpStatusId } }, res) => {
+  const { database } = firebase;
 
   try {
 
-    const snapshot = await database.collection(collections.REQUESTER_CONTACT).doc(helpStatusId).get();
-    const values = snapshot.data();
+    const contactSnapshot = await database.collection(collections.REQUESTER_CONTACT).doc(helpStatusId).get();
+    const contactData = contactSnapshot.data();
 
-    if (values) {
-      console.log(values);
-      await database.collection(collections.HELP_REQUEST).doc(values.helpRequestId).update({ status });
+    if (contactData) {
+      await database.collection(collections.HELP_REQUEST).doc(contactData.helpRequestId).update({ status });
       return res.status(200).send(status);
     }
     return res.status(404).send('');

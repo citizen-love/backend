@@ -7,6 +7,9 @@ admin.initializeApp({
   databaseURL: 'https://citizen-love.firebaseio.com'
 });
 
-const DB = admin.firestore();
+const database = admin.firestore();
+const incrementField = value => admin.firestore.FieldValue.increment(value);
 
-export default DB;
+export default {
+  database, incrementField
+};

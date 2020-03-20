@@ -1,1 +1,1 @@
-export { default as database } from './database/database';
+export { default as firebase } from './database/database';

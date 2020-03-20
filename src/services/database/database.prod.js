@@ -2,6 +2,10 @@ import admin from 'firebase-admin';
 
 admin.initializeApp({});
 
-const DB = admin.firestore();
 
-export default DB;
+const database = admin.firestore();
+const incrementField = value => admin.firestore.FieldValue.increment(value);
+
+export default {
+  database, incrementField
+};
