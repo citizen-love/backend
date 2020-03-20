@@ -13,6 +13,10 @@
     "signature2": "A responsible citizen"
   },
   "helpNotification": {
-    "emailSubject": "EN HELP NOTIFICATION SUBJECT"
+    "subject": "Someone offered help!",
+    "introLine": "Hey. We have found a very enthusiastic volunteer. This person wants, to help You. Read his messages below.",
+    "closingLine": "Stay home, stay healthy and wash your hands!",
+    "signature1": "Best regards",
+    "signature2": "A responsible citizen"
   }
 }
