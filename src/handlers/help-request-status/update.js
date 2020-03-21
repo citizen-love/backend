@@ -26,7 +26,7 @@ const handler = async ({ body: { status }, params: { helpStatusId } }, res) => {
     const contactData = await fbOps.get(database.collection(collections.REQUESTER_CONTACT).doc(helpStatusId));
 
     if (contactData) {
-      await fbOps.update(database.collection(collections.HELP_REQUEST).doc(contactData.helpRequestId), { status });
+      await fbOps.update(database.collection(collections.HELP_REQUEST).doc(contactData.helpRequestId), { 'd.status': status });
       return res.status(200).send(status);
     }
     return res.status(404).send('');

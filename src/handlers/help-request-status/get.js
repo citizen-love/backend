@@ -23,7 +23,7 @@ const handler = async ({ params: {
     const contactData = await fbOps.get(database.collection(collections.REQUESTER_CONTACT).doc(helpStatusId));
 
     if (contactData) {
-      const helpRequestData = await fbOps.get(database.collection(collections.HELP_REQUEST).doc(contactData.helpRequestId));
+      const helpRequestData = await fbOps.get(database.collection(collections.HELP_REQUEST).doc(contactData.helpRequestId), true);
       return res.status(200).send({ ...contactData, ...helpRequestData });
     }
     return res.status(404).send('');

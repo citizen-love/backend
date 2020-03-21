@@ -1,4 +1,5 @@
 import admin from 'firebase-admin';
+import { GeoFirestore } from 'geofirestore';
 
 const serviceAccount = require('../../../admin-sdk.json');
 
@@ -8,6 +9,7 @@ admin.initializeApp({
 });
 
 const database = admin.firestore();
+const geoDatabase = new GeoFirestore(database);
 const incrementField = value => admin.firestore.FieldValue.increment(value);
 const getLocationEntry = (location) => {
   const [lat, len] = location.split(',');
@@ -15,5 +17,8 @@ const getLocationEntry = (location) => {
 };
 
 export default {
-  database, incrementField, getLocationEntry
+  database,
+  geoDatabase,
+  incrementField,
+  getLocationEntry
 };

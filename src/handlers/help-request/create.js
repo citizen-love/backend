@@ -28,12 +28,11 @@ const handler = async ({ body: {
   community, location, email,
   phone = '', category, customCategory = ''
 } }, res) => {
-  const { database, getLocationEntry } = firebase;
+  const { database, geoDatabase, getLocationEntry } = firebase;
 
-  console.log(getLocationEntry);
   try {
     const uniqueIdentifier = uuid();
-    const helpRequest = database.collection(collections.HELP_REQUEST).doc();
+    const helpRequest = geoDatabase.collection(collections.HELP_REQUEST).doc();
     const requesterContact = database.collection(collections.REQUESTER_CONTACT).doc(uniqueIdentifier);
 
     const helpRequestInformation = {
@@ -42,7 +41,7 @@ const handler = async ({ body: {
       country,
       language,
       community,
-      location: getLocationEntry(location),
+      coordinates: getLocationEntry(location),
       category,
       customCategory,
       createdAt: new Date(),

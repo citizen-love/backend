@@ -30,7 +30,7 @@ const handler = async (
     if (contactDetails[0]) {
 
       const { language } = await fbOps.get(
-        database.collection(collections.HELP_REQUEST).doc(helpRequestId)
+        database.collection(collections.HELP_REQUEST).doc(helpRequestId), true
       );
 
       const emailVariables = {
@@ -44,7 +44,7 @@ const handler = async (
       }, emailVariables);
       await fbOps.update(
         database.collection(collections.HELP_REQUEST).doc(helpRequestId),
-        { counter: incrementField(1) }
+        { 'd.counter': incrementField(1) }
       );
       return res.status(200).send({
         helpRequestId,
