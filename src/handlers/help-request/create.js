@@ -29,6 +29,8 @@ const handler = async ({ body: {
   phone = '', category, customCategory = ''
 } }, res) => {
   const { database, getLocationEntry } = firebase;
+
+  console.log(getLocationEntry);
   try {
     const uniqueIdentifier = uuid();
     const helpRequest = database.collection(collections.HELP_REQUEST).doc();
