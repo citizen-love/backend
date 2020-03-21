@@ -15,7 +15,7 @@ const validations = [
   body('country').exists().isString(),
   body('language').exists().custom(val => ALLOWED_LANGUAGES.includes(val)),
   body('community').exists().isString(),
-  body('location').exists().isString(),
+  body('location').exists().isLatLong(),
   body('email').exists().isEmail(),
   body('phone').optional().isString(),
   body('category').exists().isArray(),
@@ -28,7 +28,7 @@ const handler = async ({ body: {
   community, location, email,
   phone = '', category, customCategory = ''
 } }, res) => {
-  const { database } = firebase;
+  const { database, getLocationEntry } = firebase;
   try {
     const uniqueIdentifier = uuid();
     const helpRequest = database.collection(collections.HELP_REQUEST).doc();
@@ -40,7 +40,7 @@ const handler = async ({ body: {
       country,
       language,
       community,
-      location,
+      location: getLocationEntry(location),
       category,
       customCategory,
       createdAt: new Date(),
