@@ -6,7 +6,8 @@ const CITIZEN_SENDER = 'citizen@love.com';
 const templateIds = {
   confirmation: 'd-a2181be0bca343ac948f1b410e380cb2',
   helpNotification: 'd-fc60c46f39ed43aaaaf4a7bd716f0e87',
-  emailSubscriptionConfirmation: 'd-cb4ed1348ea94e27a105a661875884ac'
+  emailSubscriptionConfirmation: 'd-cb4ed1348ea94e27a105a661875884ac',
+  notifySubscribersOnHelp: 'd-4d135f68db824cd09aca40391d12ce7f'
 };
 
 
