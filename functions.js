@@ -1,11 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 
-import createHelpRequest from './src/handlers/help-request/create';
-import getHelpStatus from './src/handlers/help-request-status/get';
-import updateHelpStatus from './src/handlers/help-request-status/update';
-import createOffer from './src/handlers/help-offer/create';
-import subscribeWithEmail from './src/handlers/subscribe-notifications/subscribe';
+import createHelpRequest from './src/http-handlers/help-request/create';
+import getHelpStatus from './src/http-handlers/help-request-status/get';
+import updateHelpStatus from './src/http-handlers/help-request-status/update';
+import createOffer from './src/http-handlers/help-offer/create';
+import subscribeWithEmail from './src/http-handlers/subscribe-notifications/subscribe';
+
+import notifySubscribersOnHelp from './src/background-handlers/notify-subscribers/onhelp';
 
 import {
   HELP_REQUEST,
@@ -30,4 +32,10 @@ app.post(HELP_OFFER, createOffer);
 
 app.post(SUBSCRIBE_EMAIL, subscribeWithEmail);
 
+// REST API
+
 exports.api = functions.https.onRequest(app);
+
+// backround functions
+
+exports.notifySubscribersOnHelp = notifySubscribersOnHelp;
