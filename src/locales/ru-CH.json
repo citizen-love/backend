@@ -21,17 +21,18 @@
   },
   "emailSubscriptionConfirmation": {
     "subject": "Thank You",
-    "emailTitle": "Someone needs your help around,",
-    "emailIntroduction": "We have just received a request for helping around You. Click on the button, and if You can apply!",
-    "buttonText": "Check it out",
+    "bodyLine1": "We added You to the local watchlist",
+    "bodyLine2": "If someone in your vicinity will need help, we will notify You immediately!",
     "socialMediaReference": "Our mission works, if all of us using it. Spread the word, and tell others about us.",
     "closingLine": "Stay home, stay healthy and wash your hands!",
     "signature1": "Best regards",
     "signature2": "A responsible citizen"
   },
   "notifySubscribersOnHelp": {
-    "subject": "Someone offered help!",
-    "introLine": "Hey. We have found a very enthusiastic volunteer. This person wants, to help You. Read his messages below.",
+    "subject": "Ready for action?",
+    "bodyLine1": "We just received an incoming request",
+    "bodyLine2": "Someone in your vicinity is asking for your help, click on the button to check it out",
+    "buttonText": "I want to help!",
     "socialMediaReference": "Our mission works, if all of us using it. Spread the word, and tell others about us.",
     "closingLine": "Stay home, stay healthy and wash your hands!",
     "signature1": "Best regards",
