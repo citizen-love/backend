@@ -20,8 +20,11 @@
     "signature2": "A responsible citizen"
   },
   "emailSubscriptionConfirmation": {
-    "subject": "Someone offered help!",
-    "introLine": "Hey. We have found a very enthusiastic volunteer. This person wants, to help You. Read his messages below.",
+    "subject": "Thank You",
+    "emailTitle": "Someone needs your help around,",
+    "emailIntroduction": "We have just received a request for helping around You. Click on the button, and if You can apply!",
+    "buttonText": "Check it out",
+    "socialMediaReference": "Our mission works, if all of us using it. Spread the word, and tell others about us.",
     "closingLine": "Stay home, stay healthy and wash your hands!",
     "signature1": "Best regards",
     "signature2": "A responsible citizen"
@@ -29,6 +32,7 @@
   "notifySubscribersOnHelp": {
     "subject": "Someone offered help!",
     "introLine": "Hey. We have found a very enthusiastic volunteer. This person wants, to help You. Read his messages below.",
+    "socialMediaReference": "Our mission works, if all of us using it. Spread the word, and tell others about us.",
     "closingLine": "Stay home, stay healthy and wash your hands!",
     "signature1": "Best regards",
     "signature2": "A responsible citizen"

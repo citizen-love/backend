@@ -3,6 +3,7 @@ import { collections } from '../../constants/constants';
 import { firebase, emailService } from '../../services/services';
 
 const EMAIL_TEMPLATE_ID = 'notifySubscribersOnHelp';
+const getUniqueURL = hash => `https://citizen.love/help-requests/${hash}`;
 
 export default functions.firestore
   .document('help-requests/{helpRequestId}')
@@ -30,7 +31,7 @@ export default functions.firestore
         const emailVariables = {
           ...emailService.getVariables(subscriber.language, EMAIL_TEMPLATE_ID),
           description,
-          helpRequestId: snap.id
+          helpRequestUrl: getUniqueURL(snap.id)
         };
         return emailService.sendEmail({
           receiver: subscriber.email,
