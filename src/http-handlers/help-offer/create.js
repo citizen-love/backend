@@ -12,11 +12,15 @@ const validations = [
   body('offerBody')
     .exists()
     .isString(),
+  body('email').exists().isEmail(),
+  body('phone').optional(),
   validateSchema
 ];
 
 const handler = async (
-  { body: { offerBody }, params: { helpRequestId } },
+  { body: {
+    offerBody, email, phone = ''
+  }, params: { helpRequestId } },
   res
 ) => {
   const { database, incrementField } = firebase;
@@ -35,7 +39,7 @@ const handler = async (
 
       const emailVariables = {
         ...emailService.getVariables(language, EMAIL_TEMPLATE_ID),
-        offerBody
+        offerBody: `${offerBody}. ${email}, ${phone}`
       };
 
       await emailService.sendEmail({
