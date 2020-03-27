@@ -1,41 +1,41 @@
 {
-  "confirmation": {
-    "subject": "Do You need help?",
-    "titleLine1": "Thank You",
-    "titleLine2": "for asking a",
-    "titleLine3": "citizen!",
-    "bodyLine1": "Dear Friend",
-    "bodyLine2": "Your help request was well noted. Now many of volunteers will see it based on your location. You will be contacted by us via email, once we find a match.",
-    "buttonText": "Track your request",
-    "socialMediaReference": "Our mission works, if all of us using it. Spread the word, and tell others about us.",
-    "closingLine": "Stay home, stay healthy and wash your hands!",
-    "signature1": "Best regards",
-    "signature2": "A responsible citizen"
-  },
-  "helpNotification": {
-    "subject": "Someone offered help!",
-    "introLine": "Hey. We have found a very enthusiastic volunteer. This person wants, to help You. Read his messages below.",
-    "closingLine": "Stay home, stay healthy and wash your hands!",
-    "signature1": "Best regards",
-    "signature2": "A responsible citizen"
-  },
-  "emailSubscriptionConfirmation": {
-    "subject": "Thank You",
-    "bodyLine1": "We added You to the local watchlist",
-    "bodyLine2": "If someone in your vicinity will need help, we will notify You immediately!",
-    "socialMediaReference": "Our mission works, if all of us using it. Spread the word, and tell others about us.",
-    "closingLine": "Stay home, stay healthy and wash your hands!",
-    "signature1": "Best regards",
-    "signature2": "A responsible citizen"
-  },
-  "notifySubscribersOnHelp": {
-    "subject": "Ready for action?",
-    "bodyLine1": "We just received an incoming request",
-    "bodyLine2": "Someone in your vicinity is asking for your help, click on the button to check it out",
-    "buttonText": "I want to help!",
-    "socialMediaReference": "Our mission works, if all of us using it. Spread the word, and tell others about us.",
-    "closingLine": "Stay home, stay healthy and wash your hands!",
-    "signature1": "Best regards",
-    "signature2": "A responsible citizen"
-  }
+    "confirmation": {
+        "subject": "Confirmation",
+        "titleLine1": "Merci",
+        "titleLine2": "d’avoir demandé",
+        "titleLine3": "un citoyen",
+        "bodyLine1": "Cher Ami",
+        "bodyLine2": "Votre demande d'aide a bien été notée. Maintenant, de nombreux bénévoles la verront en fonction de votre emplacement. Nous vous contacterons par e-mail, une fois que nous aurons trouvé un bénévole.",
+        "buttonText": "Suivre votre demande",
+        "socialMediaReference": "Notre mission fonctionne, si nous l’utilisons tous. Passez le mot et parlez de nous aux autres.",
+        "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains !",
+        "signature1": "Bien cordialement",
+        "signature2": "Votre équipe à CitizenLove"
+    },
+    "helpNotification": {
+        "subject": "Quelqu’un a proposé de l’aide !",
+        "introLine": "Hey. Nous avons trouvé un volontaire très enthousiaste. Cette personne veut vous aider. Lisez son message ci-dessous.",
+        "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains !",
+        "signature1": "Bien cordialement",
+        "signature2": "Votre équipe à CitizenLove"
+    },
+    "emailSubscriptionConfirmation": {
+        "subject": "Merci!",
+        "bodyLine1": "Nous vous avons ajouté à la liste de surveillance locale",
+        "bodyLine2": "Si quelqu'un dans votre voisinage a besoin d'aide, nous vous en informerons immédiatement!",
+        "socialMediaReference": "Notre mission fonctionne, si nous l’utilisons tous. Passez le mot et parlez de nous aux autres!",
+        "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains !",
+        "signature1": "Bien cordialement",
+        "signature2": "Votre équipe à CitizenLove"
+    },
+    "notifySubscribersOnHelp": {
+        "subject": "Prêt pour l'action  ?",
+        "bodyLine1": "Nous venons de recevoir une demande",
+        "bodyLine2": "Quelqu'un dans votre voisinage demande votre aide, cliquez sur le bouton pour accéder à la demande :",
+        "buttonText": "Je peux vous aider",
+        "socialMediaReference": "Notre mission fonctionne, si nous l’utilisons tous. Passez le mot et parlez de nous aux autres.",
+        "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains  !",
+        "signature1": "Bien cordialement",
+        "signature2": "Votre équipe à CitizenLove"
+    }
 }
