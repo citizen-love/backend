@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const ROOT_URL = 'https://api.sendgrid.com/v3/mail/send';
-const CITIZEN_SENDER = 'citizen@love.com';
+const CITIZEN_SENDER = 'share@citizen.love';
 
 const templateIds = {
   confirmation: 'd-a2181be0bca343ac948f1b410e380cb2',
