@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
-
-  build-functions:
+  ### BUILDING STAGING API
+  build-staging:
     docker:
       - image: circleci/node:latest
     steps:
@@ -13,8 +13,29 @@ jobs:
           name: Install dependencies
           command: "npm install"
       - run:
-          name: Switch to database init
-          command: "cp ./src/services/database/database.prod.js ./src/services/database/database.js"
+          name: Package application
+          command: "npm run package"
+      - run:
+          name: Copy config to build
+          command: "cp package.json ./.webpack/package.json"
+      - run:
+          name: Use citizen-love-dev
+          command: 'firebase use citizen-love-dev'
+      - run:
+          name: Deploy backend application
+          command: 'firebase deploy --only functions --token "$FIREBASE_TOKEN"'
+  ### BUILDING PRODUCTION API
+  build-production:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: Update NPM
+          command: "sudo npm install -g npm@latest firebase-tools"
+      - run:
+          name: Install dependencies
+          command: "npm install"
       - run:
           name: Package application
           command: "npm run package"
@@ -22,14 +43,30 @@ jobs:
           name: Copy config to build
           command: "cp package.json ./.webpack/package.json"
       - run:
+          name: Use citizen-love
+          command: 'firebase use citizen-love'
+      - run:
           name: Deploy backend application
           command: 'firebase deploy --only functions --token "$FIREBASE_TOKEN"'
 
 workflows:
   version: 2
-  deploy:
-    jobs: 
-    - build-functions:
-        filters:
-          branches:
-            only: master
+  deploy-staging:
+    jobs:
+      - build-staging:
+          filters:
+            branches:
+              only: development
+  deploy-production:
+    jobs:
+      - build-production:
+          requires:
+            - hold
+          filters:
+            branches:
+              only: master
+      - hold:
+          type: approval
+          filters:
+            branches:
+              only: master
