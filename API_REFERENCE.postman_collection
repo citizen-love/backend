@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "2c0c2b4f-14a5-4f20-ae0a-01aed0223548",
+		"name": "CITIZEN.LOVE",
+		"description": "Citizen Love backend collection in POSTMAN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE-HELP-REQUEST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"TITLE OF YOUR REQUEST: STRING\",\n    \"description\": \"DESCRIPTION OF THE REQUEST: STRING\",\n    \"country\": \"COUNTRY: STRING (FREE STRING)\",\n    \"community\": \"COMMUNITY: STRING (FREE STRING)\",\n    \"location\": \"COORDINATES SEPARATED BY COMMA\",\n    \"email\": \"VALID EMAIL ADDRESS\",\n    \"category\": [\"ARRAY\", \"OF\", \"STRING\"],\n    \"language\": \"LANGUAGE CODE: ALLOWED ['en', 'de', 'fr', 'it', 'ru_CH']\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-citizen-love-dev.cloudfunctions.net/api/help-request",
+					"protocol": "https",
+					"host": [
+						"us-central1-citizen-love-dev",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"help-request"
+					]
+				},
+				"description": "Initiate the pack of private information in the system and bind it with a helpRequest object."
+			},
+			"response": []
+		},
+		{
+			"name": "SUBSCRIBE-EMAIL-HELPER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"location\": \"COORDINATES SEPARATED BY COMMA\",\n    \"email\": \"VALID EMAIL ADDRESS\",\n    \"radius\": 99,\n    \"language\": \"LANGUAGE CODE: ALLOWED ['en', 'de', 'fr', 'it', 'ru_CH']\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-citizen-love-dev.cloudfunctions.net/api/subscribe",
+					"protocol": "https",
+					"host": [
+						"us-central1-citizen-love-dev",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"subscribe"
+					]
+				},
+				"description": "Initiate the pack of private information in the system and bind it with a helpRequest object."
+			},
+			"response": []
+		},
+		{
+			"name": "TRACK-HELP-REQUEST",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us-central1-citizen-love-dev.cloudfunctions.net/api/help-request/{{ PRIVATE HELP REQUEST ID }}",
+					"protocol": "https",
+					"host": [
+						"us-central1-citizen-love-dev",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"help-request",
+						"{{ PRIVATE HELP REQUEST ID }}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE-HELP-REQUEST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"status\": \"STRING: ALLOWED VALUES [COMPLETED, STARTED, CANCELLED]\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-citizen-love-dev.cloudfunctions.net/api/help-request/{{ PRIVATE HELP REQUEST ID }}",
+					"protocol": "https",
+					"host": [
+						"us-central1-citizen-love-dev",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"help-request",
+						"{{ PRIVATE HELP REQUEST ID }}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE-OFFER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"offerBody\": \"STRING\",\n\t\"email\": \"VALID EMAIL ADDRESS\",\n\t\"phone\": \"STRING\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://us-central1-citizen-love-dev.cloudfunctions.net/api/help-offer/{{ PUBLIC HELP REQUEST ID }}",
+					"protocol": "https",
+					"host": [
+						"us-central1-citizen-love-dev",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"help-offer",
+						"{{ PUBLIC HELP REQUEST ID }}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
