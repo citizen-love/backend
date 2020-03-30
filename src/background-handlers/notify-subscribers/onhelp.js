@@ -20,7 +20,7 @@ export default functions.firestore
     try {
       const helpGiversSnaphot = await geoDatabase.collection(collections.HELPGIVER_CONTACT).near({
         center: coordinates,
-        radius: 200
+        radius: 30
       }).get();
 
       helpGiversSnaphot.forEach(givers => {
