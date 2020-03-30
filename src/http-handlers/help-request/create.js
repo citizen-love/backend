@@ -2,7 +2,7 @@ import uuid from 'uuid-random';
 import { body } from 'express-validator';
 
 import { collections } from '../../constants/constants';
-import { firebase, fbOps, emailService } from '../../services/services';
+import { firebase, fbOps, emailService, slackService } from '../../services/services';
 import { validateSchema } from '../../utils/utils';
 
 const ALLOWED_LANGUAGES = ['en', 'de', 'fr', 'it', 'ru_CH'];
@@ -62,6 +62,10 @@ const handler = async ({ body: {
       receiver: requesterContactInformation.email,
       templateId: emailService.templateIds[EMAIL_TEMPLATE_ID]
     }, emailVariables);
+    await slackService.send(slackService.templates.helpRequest({
+      ...helpRequestInformation,
+      helpRequestId: helpRequest.id
+    }));
     return res.status(200).send({ id: helpRequest.id });
   } catch (err) {
     console.log(err);
