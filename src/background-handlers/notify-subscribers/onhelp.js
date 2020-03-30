@@ -30,6 +30,8 @@ export default functions.firestore
           { lat: giverObject.coordinates.latitude, lon: giverObject.coordinates.longitude },
           { lat: coordinates.latitude, lon: coordinates.longitude }
         );
+        console.log('<<< GIVER OBJECT >>>');
+        console.log(distance);
         if (distance < giverObject.radius + 1) {
           helpGivers.push(giverObject);
         }
