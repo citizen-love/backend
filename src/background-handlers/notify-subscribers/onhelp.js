@@ -26,12 +26,16 @@ export default functions.firestore
 
       helpGiversSnaphot.forEach(givers => {
         const giverObject = givers.data();
-        const distance = distanceCalc(
-          { lat: giverObject.coordinates.latitude, lon: giverObject.coordinates.longitude },
-          { lat: coordinates.latitude, lon: coordinates.longitude }
-        );
+
+        const from = { lat: giverObject.coordinates.latitude, lon: giverObject.coordinates.longitude };
+        const to = { lat: coordinates.latitude, lon: coordinates.longitude };
+        const distance = distanceCalc(from, to);
         console.log('<<< GIVER OBJECT >>>');
         console.log(distance);
+        console.log('<<< FROM >>>');
+        console.log(from);
+        console.log('<<< TO >>>');
+        console.log(to);
         if (distance < giverObject.radius + 1) {
           helpGivers.push(giverObject);
         }
