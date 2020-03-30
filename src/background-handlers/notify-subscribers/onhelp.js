@@ -31,12 +31,12 @@ export default functions.firestore
         const to = { lat: coordinates.latitude, lon: coordinates.longitude };
         const distance = distanceCalc.between(from, to);
         console.log('<<< GIVER OBJECT >>>');
-        console.log(distance.humanly_readable());
+        console.log(distance.human_readable());
         console.log('<<< FROM >>>');
         console.log(from);
         console.log('<<< TO >>>');
         console.log(to);
-        if (distance.humanly_readable() < giverObject.radius + 1) {
+        if (distance.human_readable() < giverObject.radius + 1) {
           helpGivers.push(giverObject);
         }
       });
