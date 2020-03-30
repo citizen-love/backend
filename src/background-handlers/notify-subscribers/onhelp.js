@@ -29,7 +29,7 @@ export default functions.firestore
 
         const from = { lat: giverObject.coordinates.latitude, lon: giverObject.coordinates.longitude };
         const to = { lat: coordinates.latitude, lon: coordinates.longitude };
-        const distance = distanceCalc(from, to);
+        const distance = distanceCalc.between(from, to);
         console.log('<<< GIVER OBJECT >>>');
         console.log(distance);
         console.log('<<< FROM >>>');
