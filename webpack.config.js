@@ -25,7 +25,8 @@ module.exports = {
   plugins: [
     new Dotenv({ path: './.env' }),
     new webpack.DefinePlugin({
-      'process.env.SENDGRID_KEY': JSON.stringify(process.env.SENDGRID_KEY)
+      'process.env.SENDGRID_KEY': JSON.stringify(process.env.SENDGRID_KEY),
+      'process.env.SLACK_URL': JSON.stringify(process.env.SLACK_URL)
     })
   ],
   externals: [nodeExternals()]
