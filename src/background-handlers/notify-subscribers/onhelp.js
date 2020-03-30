@@ -1,4 +1,5 @@
 import * as functions from 'firebase-functions';
+import distanceCalc from 'geo-distance';
 import { collections } from '../../constants/constants';
 import { firebase, emailService } from '../../services/services';
 
@@ -24,7 +25,14 @@ export default functions.firestore
       }).get();
 
       helpGiversSnaphot.forEach(givers => {
-        helpGivers.push(givers.data());
+        const giverObject = givers.data();
+        const distance = distanceCalc(
+          { lat: giverObject.coordinates.latitude, lon: giverObject.coordinates.longitude },
+          { lat: coordinates.latitude, lon: coordinates.longitude }
+        );
+        if (distance < giverObject.radius + 1) {
+          helpGivers.push(giverObject);
+        }
       });
 
       const emailPromises = helpGivers.map(subscriber => {
