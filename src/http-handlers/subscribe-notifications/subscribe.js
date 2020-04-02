@@ -4,7 +4,7 @@ import { collections } from '../../constants/constants';
 import { firebase, fbOps, emailService, slackService } from '../../services/services';
 import { validateSchema } from '../../utils/utils';
 
-const ALLOWED_LANGUAGES = ['en', 'de', 'fr', 'it', 'ru_CH'];
+const ALLOWED_LANGUAGES = ['en', 'de', 'fr', 'it', 'rm'];
 const EMAIL_TEMPLATE_ID = 'emailSubscriptionConfirmation';
 
 const validations = [
@@ -12,11 +12,15 @@ const validations = [
   body('location').exists().isLatLong(),
   body('radius').optional().isNumeric(),
   body('language').exists().custom(val => ALLOWED_LANGUAGES.includes(val)),
+  body('notifyBySMS').optional().isBoolean(),
+  body('phoneNumber').optional().isString(),
   validateSchema
 ];
 
 const handler = async ({ body: {
-  location, email, radius = 100, language
+  location, email, radius = 30,
+  language, notifyBySMS = false,
+  phoneNumber = ''
 } }, res) => {
   const { geoDatabase, getLocationEntry } = firebase;
 
@@ -26,6 +30,8 @@ const handler = async ({ body: {
     const helpGiverInformation = {
       email,
       radius,
+      notifyBySMS,
+      phoneNumber,
       language,
       coordinates: getLocationEntry(location),
       createdAt: new Date()

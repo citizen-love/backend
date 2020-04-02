@@ -37,5 +37,8 @@
         "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains  !",
         "signature1": "Bien cordialement",
         "signature2": "Votre équipe à CitizenLove"
-    }
+    },
+    "sms": {
+        "notifySubscribersOnHelp": "Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details."
+      }
 }
