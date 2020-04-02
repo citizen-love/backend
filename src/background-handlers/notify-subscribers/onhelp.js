@@ -1,10 +1,9 @@
 import * as functions from 'firebase-functions';
 import distanceCalc from 'geo-distance';
-import { collections } from '../../constants/constants';
+import { collections, urls } from '../../constants/constants';
 import { firebase, emailService } from '../../services/services';
 
 const EMAIL_TEMPLATE_ID = 'notifySubscribersOnHelp';
-const getUniqueURL = hash => `https://citizen.love/help/${hash}`;
 
 export default functions.firestore
   .document('help-requests/{helpRequestId}')
@@ -12,6 +11,7 @@ export default functions.firestore
 
     const { geoDatabase } = firebase;
     const { coordinates, status, description } = snap.data().d;
+    const { getUniqueURL } = urls;
 
     const helpGivers = [];
 
@@ -30,22 +30,22 @@ export default functions.firestore
         const from = { lat: giverObject.coordinates.latitude, lon: giverObject.coordinates.longitude };
         const to = { lat: coordinates.latitude, lon: coordinates.longitude };
         const distance = distanceCalc.between(from, to);
-        console.log('<<< GIVER OBJECT >>>');
-        console.log(distance.human_readable());
-        console.log('<<< FROM >>>');
-        console.log(from);
-        console.log('<<< TO >>>');
-        console.log(to);
         if (distance.human_readable() < giverObject.radius + 1) {
           helpGivers.push(giverObject);
         }
       });
 
+      await slackService.send(slackService.templates.nearbyHelpers({
+        nearby: helpGiversSnaphot.length,
+        sent: helpGivers.length,
+        helpRequest: getUniqueURL(snap.id, 'help')
+      }));
+
       const emailPromises = helpGivers.map(subscriber => {
         const emailVariables = {
           ...emailService.getVariables(subscriber.language, EMAIL_TEMPLATE_ID),
           description,
-          helpRequestUrl: getUniqueURL(snap.id)
+          helpRequestUrl: getUniqueURL(snap.id, 'help')
         };
         return emailService.sendEmail({
           receiver: subscriber.email,
@@ -57,7 +57,6 @@ export default functions.firestore
 
       return null;
     } catch (e) {
-      console.log(e);
       return null;
     }
   });
