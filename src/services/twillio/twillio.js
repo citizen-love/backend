@@ -9,8 +9,7 @@ const getVariables = (countryCode, templateID) => {
 };
 
 const sendSms = async (phoneNumber, text) => {
-  const client = TwilioClient(process.env.TWILIO_KEY, process.env.SECRET);
-
+  const client = TwilioClient(process.env.TWILIO_KEY, process.env.TWILIO_SECRET);
   try {
     await client.messages.create({
       body: text,

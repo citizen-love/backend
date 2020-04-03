@@ -23,8 +23,16 @@ export default functions.firestore
         radius: 30
       }).get();
 
-      const emailRec = helpGiversSnaphot.map(givers => notifications.sendEmailFilter(givers.data())).filter(n => n);
-      const smsRec = helpGiversSnaphot.map(givers => notifications.sendSmsFilter(givers.data())).filter(n => n);
+      const emailRecRaw = [];
+      const smsRecRaw = [];
+
+      helpGiversSnaphot.forEach(snapShot => {
+        emailRecRaw.push(notifications.sendEmailFilter(snapShot.data()));
+        smsRecRaw.push(notifications.sendSmsFilter(snapShot.data()));
+      });
+
+      const emailRec = emailRecRaw.filter(n => n);
+      const smsRec = smsRecRaw.filter(n => n);
 
       const smsPromises = smsRec.map(subscriber => {
         const smsBody = twillioService.getVariables(
@@ -46,7 +54,7 @@ export default functions.firestore
       });
 
       const allPromises = [...smsPromises, ...emailPromises];
-      await Promise.all(allPromises.map(p => p.catch(e => e)));
+      await Promise.all(allPromises.map(p => p.catch(e => console.log(e))));
 
       return null;
     } catch (e) {

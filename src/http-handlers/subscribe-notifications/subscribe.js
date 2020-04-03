@@ -1,53 +1,48 @@
-import { body } from 'express-validator';
+/* eslint-disable no-restricted-globals */
+import { body as bodyVal } from 'express-validator';
 
+import { helpGiverModel } from '../../models/models';
 import { collections } from '../../constants/constants';
 import { firebase, fbOps, emailService, slackService } from '../../services/services';
 import { validateSchema } from '../../utils/utils';
 
 const ALLOWED_LANGUAGES = ['en', 'de', 'fr', 'it', 'rm'];
+const ALLOWED_PREFERENCES = ['EMAIL', 'SMS'];
 const EMAIL_TEMPLATE_ID = 'emailSubscriptionConfirmation';
 
 const validations = [
-  body('email').exists().isString(),
-  body('location').exists().isLatLong(),
-  body('radius').optional().isNumeric(),
-  body('language').exists().custom(val => ALLOWED_LANGUAGES.includes(val)),
-  body('notifyBySMS').optional().isBoolean(),
-  body('phoneNumber').optional().isString(),
+  bodyVal('email').exists().isString(),
+  bodyVal('location').exists().isLatLong(),
+  bodyVal('radius').optional().isNumeric(),
+  bodyVal('language').exists().custom(val => ALLOWED_LANGUAGES.includes(val)),
+  bodyVal('preferences').exists().custom(val => val.every(pref => ALLOWED_PREFERENCES.includes(pref))),
+  bodyVal('phoneNumber').optional().isString(),
+  bodyVal('uid').exists().isString(),
   validateSchema
 ];
 
-const handler = async ({ body: {
-  location, email, radius = 30,
-  language, notifyBySMS = false,
-  phoneNumber = ''
-} }, res) => {
-  const { geoDatabase, getLocationEntry } = firebase;
+const handler = async ({ body }, res) => {
+  const { geoDatabase } = firebase;
 
   try {
-    const helpGiver = geoDatabase.collection(collections.HELPGIVER_CONTACT).doc();
-
-    const helpGiverInformation = {
-      email,
-      radius,
-      notifyBySMS,
-      phoneNumber,
-      language,
-      coordinates: getLocationEntry(location),
-      createdAt: new Date()
-    };
+    const helpGiver = geoDatabase.collection(collections.HELPGIVER_CONTACT).doc(body.uid);
+    const helpGiverInformation = helpGiverModel(body);
+    const emailVariables = emailService.getVariables(helpGiverInformation.language, EMAIL_TEMPLATE_ID);
 
 
-    await fbOps.create(helpGiver, helpGiverInformation);
-
-    const emailVariables = emailService.getVariables(language, EMAIL_TEMPLATE_ID);
-
+    await fbOps.create(
+      helpGiver,
+      helpGiverInformation
+    );
     await emailService.sendEmail({
-      receiver: email,
+      receiver: helpGiverInformation.email,
       templateId: emailService.templateIds[EMAIL_TEMPLATE_ID]
     }, emailVariables);
-    await slackService.send(slackService.templates.watchlistSignup(email));
-    return res.status(200).send({ id: helpGiver.id });
+    await slackService.send(
+      slackService.templates.watchlistSignup(helpGiverInformation.email)
+    );
+
+    return res.status(200).send({ uid: helpGiverInformation.uid });
   } catch (err) {
     console.log(err);
     return res.status(500).send('Unexpected Error Happened');
