@@ -1,8 +1,6 @@
 import TwilioClient from 'twilio';
 
-
-const SWISS_PREFIX = new RegExp(/^\+41/);
-const SWISS_DEFAULT_NUMBER = '';
+const SWISS_DEFAULT_NUMBER = '+41798070883';
 
 const getVariables = (countryCode, templateID) => {
   // eslint-disable-next-line import/no-dynamic-require
@@ -11,10 +9,7 @@ const getVariables = (countryCode, templateID) => {
 };
 
 const sendSms = async (phoneNumber, text) => {
-  if (!SWISS_PREFIX.test(phoneNumber)) {
-    return null;
-  }
-  const client = TwilioClient('', '');
+  const client = TwilioClient(process.env.TWILIO_KEY, process.env.SECRET);
 
   try {
     await client.messages.create({
