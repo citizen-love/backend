@@ -1,9 +1,10 @@
 import * as functions from 'firebase-functions';
-import distanceCalc from 'geo-distance';
 import { collections, urls } from '../../constants/constants';
-import { firebase, emailService } from '../../services/services';
+import { notifications } from '../../middlewares/middlewares';
+import { firebase, emailService, twillioService } from '../../services/services';
 
 const EMAIL_TEMPLATE_ID = 'notifySubscribersOnHelp';
+const SMS_BODY_ID = 'notifySubscribersOnHelp';
 
 export default functions.firestore
   .document('help-requests/{helpRequestId}')
@@ -12,8 +13,6 @@ export default functions.firestore
     const { geoDatabase } = firebase;
     const { coordinates, status, description } = snap.data().d;
     const { getUniqueURL } = urls;
-
-    const helpGivers = [];
 
     if (status !== 'started') {
       return null;
@@ -24,24 +23,25 @@ export default functions.firestore
         radius: 30
       }).get();
 
-      helpGiversSnaphot.forEach(givers => {
-        const giverObject = givers.data();
+      const emailRecRaw = [];
+      const smsRecRaw = [];
 
-        const from = { lat: giverObject.coordinates.latitude, lon: giverObject.coordinates.longitude };
-        const to = { lat: coordinates.latitude, lon: coordinates.longitude };
-        const distance = distanceCalc.between(from, to);
-        if (distance.human_readable() < giverObject.radius + 1) {
-          helpGivers.push(giverObject);
-        }
+      helpGiversSnaphot.forEach(snapShot => {
+        emailRecRaw.push(notifications.sendEmailFilter(snapShot.data()));
+        smsRecRaw.push(notifications.sendSmsFilter(snapShot.data()));
       });
 
-      await slackService.send(slackService.templates.nearbyHelpers({
-        nearby: helpGiversSnaphot.length,
-        sent: helpGivers.length,
-        helpRequest: getUniqueURL(snap.id, 'help')
-      }));
+      const emailRec = emailRecRaw.filter(n => n);
+      const smsRec = smsRecRaw.filter(n => n);
 
-      const emailPromises = helpGivers.map(subscriber => {
+      const smsPromises = smsRec.map(subscriber => {
+        const smsBody = twillioService.getVariables(
+          subscriber.language, SMS_BODY_ID
+        ).replace('{{helpRequestUrl}}', getUniqueURL(snap.id, 'help'));
+        return twillioService.sendSms(subscriber.phoneNumber, smsBody);
+      });
+
+      const emailPromises = emailRec.map(subscriber => {
         const emailVariables = {
           ...emailService.getVariables(subscriber.language, EMAIL_TEMPLATE_ID),
           description,
@@ -53,10 +53,12 @@ export default functions.firestore
         }, emailVariables);
       });
 
-      await Promise.all(emailPromises.map(p => p.catch(e => e)));
+      const allPromises = [...smsPromises, ...emailPromises];
+      await Promise.all(allPromises.map(p => p.catch(e => console.log(e))));
 
       return null;
     } catch (e) {
+      console.log(e);
       return null;
     }
   });

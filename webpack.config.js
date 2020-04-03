@@ -28,7 +28,9 @@ module.exports = {
       'process.env.APPLIED_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.SENDGRID_KEY': JSON.stringify(process.env.SENDGRID_KEY),
       'process.env.SLACK_URL_PRODUCTION': JSON.stringify(process.env.SLACK_URL_PRODUCTION || ''),
-      'process.env.SLACK_URL_STAGING': JSON.stringify(process.env.SLACK_URL_STAGING || '')
+      'process.env.SLACK_URL_STAGING': JSON.stringify(process.env.SLACK_URL_STAGING || ''),
+      'process.env.TWILIO_KEY': JSON.stringify(process.env.TWILIO_KEY || ''),
+      'process.env.TWILIO_SECRET': JSON.stringify(process.env.TWILIO_SECRET || '')
     })
   ],
   externals: [nodeExternals()]
