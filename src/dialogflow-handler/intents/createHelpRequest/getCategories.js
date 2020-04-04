@@ -2,11 +2,13 @@
 import { collections } from '../../../constants/constants';
 import { firebase, fbOps } from '../../../services/services';
 
-const NAME = 'helprequest-get-title';
+const NAME = 'helprequest-get-categories';
 
 const intent = agent => async ({
-  query, session, locale
+  query, session, locale, ...rest
 }) => {
+
+  console.log(rest);
 
   const { database } = firebase;
   const sessionId = session.split('/').pop();
@@ -14,13 +16,15 @@ const intent = agent => async ({
     helpRequestConversation
   } } = require(`../../../locales/${locale}.json`);
 
+  const normalizedCategories = query.toLowerCase().split(/\W+/);
+
   const partialRequest = database.collection(collections.HELP_REQUEST_CONVERSATION).doc(sessionId);
   try {
-    await fbOps.create(partialRequest, { title: query });
-    return agent.add(helpRequestConversation.getTitleReply);
+    await fbOps.update(partialRequest, { category: normalizedCategories });
+    return agent.add(helpRequestConversation.getCategoriesReply);
   } catch (e) {
     console.log(e);
-    return agent.add(helpRequestConversation.getTitleError);
+    return agent.add(helpRequestConversation.getCategoriesReply);
   }
 };
 

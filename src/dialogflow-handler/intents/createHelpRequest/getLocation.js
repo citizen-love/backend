@@ -2,7 +2,7 @@
 import { collections } from '../../../constants/constants';
 import { firebase, fbOps } from '../../../services/services';
 
-const NAME = 'helprequest-get-title';
+const NAME = 'helprequest-get-location';
 
 const intent = agent => async ({
   query, session, locale
@@ -16,11 +16,11 @@ const intent = agent => async ({
 
   const partialRequest = database.collection(collections.HELP_REQUEST_CONVERSATION).doc(sessionId);
   try {
-    await fbOps.create(partialRequest, { title: query });
-    return agent.add(helpRequestConversation.getTitleReply);
+    await fbOps.update(partialRequest, { zip: query });
+    return agent.add(helpRequestConversation.getLocationReply);
   } catch (e) {
     console.log(e);
-    return agent.add(helpRequestConversation.getTitleError);
+    return agent.add(helpRequestConversation.getLocationError);
   }
 };
 
