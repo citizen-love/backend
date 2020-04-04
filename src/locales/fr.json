@@ -39,6 +39,19 @@
         "signature2": "Votre équipe à CitizenLove"
     },
     "sms": {
-        "notifySubscribersOnHelp": "Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details."
+        "notifySubscribersOnHelp": "Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details.",
+        "helpRequestConfirmation": "We got You covered! Your request is active, see how it looks on {{helpRequestUrl}}",
+        "helpRequestConversation": {
+          "getTitleReply": "Okay. Please describe in more details, what You need.",
+          "getTitleError": "Sorry, something went wrong.",
+          "getDescriptionReply": "Looks good. Please choose from the following categories: SHOPPING, CHILDCARE, LONELYNESS, HEALTH",
+          "getDescriptionError": "Sorry, something went wrong.",
+          "getCategoriesReply": "Nice. What is your ZIP address? We will notify volunteers in your area.",
+          "getCategoriesError": "Sorry, something went wrong.",
+          "getLocationReply": "Thanks. Finally, if You want leave your email address.",
+          "getLocationError": "Sorry, something went wrong.",
+          "getEmailReply": "Thanks, help is on the way. You can follow your request with this {{requestUrl}}. We have sent an email anyway!",
+          "getEmailError": "Sorry, something went wrong."
+        }
       }
 }

@@ -40,6 +40,7 @@
   },
   "sms": {
     "notifySubscribersOnHelp": "Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details.",
+    "helpRequestConfirmation": "We got You covered! Your request is active, see how it looks on {{helpRequestUrl}}",
     "helpRequestConversation": {
       "getTitleReply": "Okay. Please describe in more details, what You need.",
       "getTitleError": "Sorry, something went wrong.",
