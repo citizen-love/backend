@@ -50,7 +50,7 @@
       "getCategoriesError": "Sorry, something went wrong.",
       "getLocationReply": "Thanks. Finally, if You want leave your email address.",
       "getLocationError": "Sorry, something went wrong.",
-      "getEmailReply": "Thanks, help is on the way. You can follow your request with this {{requestUrl}}. We have sent an email anyway!",
+      "getEmailReply": "Thats it! Please type YES, to activate your help request!",
       "getEmailError": "Sorry, something went wrong."
     }
   }

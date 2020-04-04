@@ -16,7 +16,7 @@ const searchByZIP = async (zip, country) => {
     if (!results.length) {
       return DEFAULT_SWISS_LOCATION;
     }
-    return data.results[0].geometry.location;
+    return results[0].geometry.location;
   } catch (e) {
     console.log(e);
     return null;

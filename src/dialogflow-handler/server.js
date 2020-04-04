@@ -19,6 +19,7 @@ app.post('/dialogflow', express.json(), (req, res) => {
   intentMap.set(createHelpRequest.getCategories.name, createHelpRequest.getCategories.intent(agent));
   intentMap.set(createHelpRequest.getLocation.name, createHelpRequest.getLocation.intent(agent));
   intentMap.set(createHelpRequest.getEmail.name, createHelpRequest.getEmail.intent(agent));
+  intentMap.set(createHelpRequest.confirmHelpRequest.name, createHelpRequest.confirmHelpRequest.intent(agent));
 
   agent.handleRequest(intentMap);
 });
