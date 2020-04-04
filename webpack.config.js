@@ -32,7 +32,8 @@ module.exports = function webp(env) {
         'process.env.SLACK_URL_PRODUCTION': JSON.stringify(process.env.SLACK_URL_PRODUCTION || ''),
         'process.env.SLACK_URL_STAGING': JSON.stringify(process.env.SLACK_URL_STAGING || ''),
         'process.env.TWILIO_KEY': JSON.stringify(process.env.TWILIO_KEY || ''),
-        'process.env.TWILIO_SECRET': JSON.stringify(process.env.TWILIO_SECRET || '')
+        'process.env.TWILIO_SECRET': JSON.stringify(process.env.TWILIO_SECRET || ''),
+        'process.env.GEOLOCATION_KEY': JSON.stringify(process.env.GEOLOCATION_KEY || '')
       })
     ],
     externals: [nodeExternals()]

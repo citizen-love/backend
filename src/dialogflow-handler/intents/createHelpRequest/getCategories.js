@@ -5,10 +5,8 @@ import { firebase, fbOps } from '../../../services/services';
 const NAME = 'helprequest-get-categories';
 
 const intent = agent => async ({
-  query, session, locale, ...rest
+  query, session, locale
 }) => {
-
-  console.log(rest);
 
   const { database } = firebase;
   const sessionId = session.split('/').pop();
