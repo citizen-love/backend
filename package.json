@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "apiVersion": "v0.1",
   "description": "Collection of google functions used at Citizen Love",
-  "main": "server.js",
+  "main": "functions.js",
   "scripts": {
     "package:local": "webpack --env.NODE_ENV=local",
     "package:staging": "webpack --env.NODE_ENV=development",
@@ -12,7 +12,7 @@
     "dev": "nodemon --exec run-s package:local start-functions",
     "start-functions": "functions-framework --target=api --source=.webpack/functions.js",
     
-    "tunnel": "ngrok http 8082"
+    "tunnel": "ngrok http 8081"
   },
   "repository": {
     "type": "git",

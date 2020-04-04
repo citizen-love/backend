@@ -1,24 +1,21 @@
 
 import express from 'express';
-import WebhookClient from 'dialogflow-fulfillment';
 
+import createHelpRequest from './intents/createHelpRequest/createHelpRequest';
 import { versions } from '../constants/constants';
+
+const { WebhookClient } = require('dialogflow-fulfillment');
 
 const app = express();
 
 app.get('/', (req, res) => res.send(versions.dialogflow));
 
 app.post('/dialogflow', express.json(), (req, res) => {
-  console.log('request hits the server');
-  console.log(req);
   const agent = new WebhookClient({ request: req, response: res });
 
-  function welcome() {
-    agent.add('Welcome to my agent!');
-  }
-
   const intentMap = new Map();
-  intentMap.set('Default Welcome Intent', welcome);
+  intentMap.set(createHelpRequest.getTitle.name, createHelpRequest.getTitle.intent(agent));
+
   agent.handleRequest(intentMap);
 });
 
