@@ -2,7 +2,7 @@ const template = ({
   country,
   category,
   customCategory,
-  helpRequestId,
+  helpRequestUrl,
   title,
   description }) => ({
   blocks: [
@@ -48,7 +48,7 @@ const template = ({
       elements: [
         {
           type: 'mrkdwn',
-          text: `*HelpRequestLink:* https://citizen.love/help/${helpRequestId}`
+          text: `*HelpRequestLink:* ${helpRequestUrl}`
         }
       ]
     }

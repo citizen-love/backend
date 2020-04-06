@@ -1,13 +1,12 @@
 import uuid from 'uuid-random';
 import { body } from 'express-validator';
 
-import { collections } from '../../constants/constants';
+import { collections, urls } from '../../constants/constants';
 import { firebase, fbOps, emailService, slackService } from '../../services/services';
 import { validateSchema } from '../../utils/utils';
 
 const ALLOWED_LANGUAGES = ['en', 'de', 'fr', 'it', 'ru_CH'];
 const EMAIL_TEMPLATE_ID = 'confirmation';
-const getUniqueURL = hash => `https://citizen.love/my-request/${hash}`;
 
 const validations = [
   body('title').exists().isString(),
@@ -29,6 +28,7 @@ const handler = async ({ body: {
   phone = '', category, customCategory = ''
 } }, res) => {
   const { database, geoDatabase, getLocationEntry } = firebase;
+  const { getUniqueURL } = urls;
 
   try {
     const uniqueIdentifier = uuid();
@@ -55,7 +55,7 @@ const handler = async ({ body: {
 
     const emailVariables = {
       ...emailService.getVariables(language, EMAIL_TEMPLATE_ID),
-      trackingURL: getUniqueURL(uniqueIdentifier)
+      trackingURL: getUniqueURL(uniqueIdentifier, 'my-request')
     };
 
     await emailService.sendEmail({
@@ -64,7 +64,7 @@ const handler = async ({ body: {
     }, emailVariables);
     await slackService.send(slackService.templates.helpRequest({
       ...helpRequestInformation,
-      helpRequestId: helpRequest.id
+      helpRequestUrl: getUniqueURL(helpRequest.id, 'help')
     }));
     return res.status(200).send({ id: helpRequest.id });
   } catch (err) {

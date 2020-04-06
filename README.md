@@ -2,11 +2,11 @@
 
 * [Citizen love](https://citizen.love)
 
-## Getting Started
+## Getting Started 
 
 If You have a firebase project, You can easily recreate and launch your own help API by cloning/forking this repository. Never commit your firebase admin json file.
 
-### Prerequisites
+### Prerequisites 
 
 You will need to have nodeJS and NPM installed on your local machine. To deploy it, You will need to have a firebase project.
 

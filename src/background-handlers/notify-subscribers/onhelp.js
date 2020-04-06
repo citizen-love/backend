@@ -1,9 +1,10 @@
 import * as functions from 'firebase-functions';
-import { collections } from '../../constants/constants';
-import { firebase, emailService } from '../../services/services';
+import { collections, urls } from '../../constants/constants';
+import { notifications } from '../../middlewares/middlewares';
+import { firebase, emailService, twillioService } from '../../services/services';
 
 const EMAIL_TEMPLATE_ID = 'notifySubscribersOnHelp';
-const getUniqueURL = hash => `https://citizen.love/help/${hash}`;
+const SMS_BODY_ID = 'notifySubscribersOnHelp';
 
 export default functions.firestore
   .document('help-requests/{helpRequestId}')
@@ -11,8 +12,7 @@ export default functions.firestore
 
     const { geoDatabase } = firebase;
     const { coordinates, status, description } = snap.data().d;
-
-    const helpGivers = [];
+    const { getUniqueURL } = urls;
 
     if (status !== 'started') {
       return null;
@@ -23,15 +23,29 @@ export default functions.firestore
         radius: 30
       }).get();
 
-      helpGiversSnaphot.forEach(givers => {
-        helpGivers.push(givers.data());
+      const emailRecRaw = [];
+      const smsRecRaw = [];
+
+      helpGiversSnaphot.forEach(snapShot => {
+        emailRecRaw.push(notifications.sendEmailFilter(snapShot.data()));
+        smsRecRaw.push(notifications.sendSmsFilter(snapShot.data()));
       });
 
-      const emailPromises = helpGivers.map(subscriber => {
+      const emailRec = emailRecRaw.filter(n => n);
+      const smsRec = smsRecRaw.filter(n => n);
+
+      const smsPromises = smsRec.map(subscriber => {
+        const smsBody = twillioService.getVariables(
+          subscriber.language, SMS_BODY_ID
+        ).replace('{{helpRequestUrl}}', getUniqueURL(snap.id, 'help'));
+        return twillioService.sendSms(subscriber.phoneNumber, smsBody);
+      });
+
+      const emailPromises = emailRec.map(subscriber => {
         const emailVariables = {
           ...emailService.getVariables(subscriber.language, EMAIL_TEMPLATE_ID),
           description,
-          helpRequestUrl: getUniqueURL(snap.id)
+          helpRequestUrl: getUniqueURL(snap.id, 'help')
         };
         return emailService.sendEmail({
           receiver: subscriber.email,
@@ -39,7 +53,8 @@ export default functions.firestore
         }, emailVariables);
       });
 
-      await Promise.all(emailPromises.map(p => p.catch(e => e)));
+      const allPromises = [...smsPromises, ...emailPromises];
+      await Promise.all(allPromises.map(p => p.catch(e => console.log(e))));
 
       return null;
     } catch (e) {

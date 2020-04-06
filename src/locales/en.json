@@ -37,5 +37,8 @@
     "closingLine": "Stay home, stay healthy and always wash your hands!",
     "signature1": "Best regards",
     "signature2": "Your team at CitizenLove"
+  },
+  "sms": {
+    "notifySubscribersOnHelp": "Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details."
   }
 }
