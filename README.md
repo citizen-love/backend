@@ -8,7 +8,7 @@ If You have a firebase project, You can easily recreate and launch your own help
 
 ### Prerequisites 
 
-You will need to have nodeJS and NPM installed on your local machine. To deploy it, You will need to have a firebase project.
+You will need to have nodeJS and NPM installed on your local machine. To deploy it, You will need to have a firebase project. 
 
 
 ### Installing
