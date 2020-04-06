@@ -5,7 +5,9 @@
   "description": "Collection of google functions used at Citizen Love",
   "main": "functions.js",
   "scripts": {
-    "package": "webpack",
+    "package:local": "webpack --env.NODE_ENV=local",
+    "package:staging": "webpack --env.NODE_ENV=development",
+    "package:prod": "webpack --env.NODE_ENV=production",
     "start": "npm run package && cd .webpack && cross-env NODE_ENV=local functions-framework --target=api",
     "dev": "cross-env NODE_ENV=local TEST_MODE=true jest --verbose --colors --watch",
     "test:all": "cross-env NODE_ENV=local TEST_MODE=true jest --verbose --colors"
