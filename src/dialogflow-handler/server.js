@@ -1,6 +1,9 @@
 
 import express from 'express';
 
+
+import integration from './integration/integration';
+
 import createHelpRequest from './intents/createHelpRequest/createHelpRequest';
 import { versions } from '../constants/constants';
 
@@ -8,7 +11,7 @@ const { WebhookClient } = require('dialogflow-fulfillment');
 
 const app = express();
 
-app.get('/', (req, res) => res.send(versions.dialogflow));
+app.post('/integration', express.json(), integration);
 
 app.post('/dialogflow', express.json(), (req, res) => {
   const agent = new WebhookClient({ request: req, response: res });
