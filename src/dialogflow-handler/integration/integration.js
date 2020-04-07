@@ -17,15 +17,20 @@ const sessionPath = sessionClient.sessionPath(
   'local-connected-test-dswwqo',
   uuid()
 );
+let sessionLanguage = null;
 
 const integrationHandler = async ({ body }, res) => {
   const projectedLanguage = languageMatcher(body.Body);
+
+  sessionLanguage = sessionLanguage || projectedLanguage;
+
+
   const dialogPayload = {
     session: sessionPath,
     queryInput: {
       text: {
         text: body.Body,
-        languageCode: projectedLanguage
+        languageCode: sessionLanguage
       }
     },
     queryParams: {

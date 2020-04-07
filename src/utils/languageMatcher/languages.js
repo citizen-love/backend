@@ -8,7 +8,7 @@ export default [
   },
   {
     values: ['bonjour'],
-    language: 'fr'
+    language: 'fr-FR'
   },
   {
     values: ['halo'],

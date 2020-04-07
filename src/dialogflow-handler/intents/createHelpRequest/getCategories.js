@@ -12,13 +12,14 @@ const intent = agent => async ({
   const sessionId = session.split('/').pop();
   const { sms: {
     helpRequestConversation
-  } } = require(`../../../locales/${locale}.json`);
+  } } = require(`../../../locales/${locale.substring(0, 2)}.json`);
 
   const normalizedCategories = query.toLowerCase().split(/\W+/);
+  const cleanedCategories = normalizedCategories.filter(c => c.length);
 
   const partialRequest = database.collection(collections.HELP_REQUEST_CONVERSATION).doc(sessionId);
   try {
-    await fbOps.update(partialRequest, { category: normalizedCategories });
+    await fbOps.update(partialRequest, { category: cleanedCategories });
     return agent.add(helpRequestConversation.getCategoriesReply);
   } catch (e) {
     console.log(e);

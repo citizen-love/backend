@@ -7,7 +7,7 @@ import { firebase, fbOps } from '../../../services/services';
 
 const NAME = 'helprequest-confirm';
 
-const intent = agent => async ({ session, originalRequest }) => {
+const intent = agent => async ({ session, locale, originalRequest }) => {
 
   const { database } = firebase;
   const { phoneNumber } = originalRequest.payload;
@@ -26,7 +26,7 @@ const intent = agent => async ({ session, originalRequest }) => {
       location: `${zip.lat},${zip.lng}`,
       email,
       category,
-      language: 'en',
+      language: locale,
       source: 'sms',
       phone: phoneNumber || ''
     };

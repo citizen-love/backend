@@ -1,57 +1,57 @@
 {
-    "confirmation": {
-        "subject": "Richiesta di conferma",
-        "titleLine1": "Grazie",
-        "titleLine2": "per aver chiesto a un/a",
-        "titleLine3": "cittadino/a!",
-        "bodyLine1": "Cari/e cittadini/e",
-        "bodyLine2": "La Tua richiesta di aiuto è stata pubblicata e sarà visualizzata dai/dalle volontari/e in base alla Tua posizione. Ti invieremo un'e-mail non appena qualcuno potrà aiutarti. Puoi rintracciare la Tua richiesta qui:",
-        "buttonText": "Segui la tua richiesta",
-        "socialMediaReference": "Più persone ci conoscono, più possiamo aiutare. Sostienici nella nostra missione e aiuta a diffondere la parola!",
-        "closingLine": "Stai a casa, in salute e lavati sempre la menai!",
-        "signature1": "Cari saluti",
-        "signature2": "Il Tuo team di CitizenLove"
-    },
-    "helpNotification": {
-        "subject": "Qualcuno/a ha offerto aiuto!",
-        "introLine": "Ciao cittadini/e! Qualcuno/ ha visto la tua richiesta e offerto aiuto. Visualizza il suo messaggio qui sotto:",
-        "closingLine": "Stai a casa, in salute e lavati sempre le mani!",
-        "signature1": "Cari saluti",
-        "signature2": "Il Tuo team di CitizenLove"
-    },
-    "emailSubscriptionConfirmation": {
-        "subject": "Sei forte!",
-        "bodyLine1": "Ti abbiamo aggiunto/a alla watchlist locale",
-        "bodyLine2": "Se qualcuno/ nelle Tue vicinanze avrà bisogno di aiuto, Te lo notificheremo immediatamente!",
-        "socialMediaReference": "Più persone ci conoscono, più possiamo aiutare. Sostienici nella nostra missione e aiuta a diffondere la parola!",
-        "closingLine": "Stai a casa, in salute e lavati sempre le mani!",
-        "signature1": "Cari saluti",
-        "signature2": "Il Tuo team di CitizenLove"
-    },
-    "notifySubscribersOnHelp": {
-        "subject": "È il momento di aiutare",
-        "bodyLine1": "Abbiamo appena ricevuto una richiesta in entarta",
-        "bodyLine2": "Qualcuno/a nelle Tue vicinanze sta chiedendo il Tuo aiuto, clicca sul button per visualizzare i dettagli:",
-        "buttonText": "Vedi dettagli della richiesta",
-        "socialMediaReference": "Più persone ci conoscono, più possiamo aiutare. Sostienici nella nostra missione e aiuta a diffondere la parola!",
-        "closingLine": "Stai a casa, in salute e lavati sempre le mani!",
-        "signature1": "Cari saluti",
-        "signature2": "Il Tuo team di CitizenLove"
-    },
-    "sms": {
-        "notifySubscribersOnHelp": "Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details.",
-        "helpRequestConfirmation": "We got You covered! Your request is active, see how it looks on {{helpRequestUrl}}",
-        "helpRequestConversation": {
-          "getTitleReply": "Okay. Please describe in more details, what You need.",
-          "getTitleError": "Sorry, something went wrong.",
-          "getDescriptionReply": "Looks good. Please choose from the following categories: SHOPPING, CHILDCARE, LONELYNESS, HEALTH",
-          "getDescriptionError": "Sorry, something went wrong.",
-          "getCategoriesReply": "Nice. What is your ZIP address? We will notify volunteers in your area.",
-          "getCategoriesError": "Sorry, something went wrong.",
-          "getLocationReply": "Thanks. Finally, if You want leave your email address.",
-          "getLocationError": "Sorry, something went wrong.",
-          "getEmailReply": "Thanks, help is on the way. You can follow your request with this {{requestUrl}}. We have sent an email anyway!",
-          "getEmailError": "Sorry, something went wrong."
-        }
-      }
+  "confirmation": {
+    "subject": "Richiesta di conferma",
+    "titleLine1": "Grazie",
+    "titleLine2": "per aver chiesto a un/a",
+    "titleLine3": "cittadino/a!",
+    "bodyLine1": "Cari/e cittadini/e",
+    "bodyLine2": "La Tua richiesta di aiuto è stata pubblicata e sarà visualizzata dai/dalle volontari/e in base alla Tua posizione. Ti invieremo un'e-mail non appena qualcuno potrà aiutarti. Puoi rintracciare la Tua richiesta qui:",
+    "buttonText": "Segui la tua richiesta",
+    "socialMediaReference": "Più persone ci conoscono, più possiamo aiutare. Sostienici nella nostra missione e aiuta a diffondere la parola!",
+    "closingLine": "Stai a casa, in salute e lavati sempre la menai!",
+    "signature1": "Cari saluti",
+    "signature2": "Il Tuo team di CitizenLove"
+  },
+  "helpNotification": {
+    "subject": "Qualcuno/a ha offerto aiuto!",
+    "introLine": "Ciao cittadini/e! Qualcuno/ ha visto la tua richiesta e offerto aiuto. Visualizza il suo messaggio qui sotto:",
+    "closingLine": "Stai a casa, in salute e lavati sempre le mani!",
+    "signature1": "Cari saluti",
+    "signature2": "Il Tuo team di CitizenLove"
+  },
+  "emailSubscriptionConfirmation": {
+    "subject": "Sei forte!",
+    "bodyLine1": "Ti abbiamo aggiunto/a alla watchlist locale",
+    "bodyLine2": "Se qualcuno/ nelle Tue vicinanze avrà bisogno di aiuto, Te lo notificheremo immediatamente!",
+    "socialMediaReference": "Più persone ci conoscono, più possiamo aiutare. Sostienici nella nostra missione e aiuta a diffondere la parola!",
+    "closingLine": "Stai a casa, in salute e lavati sempre le mani!",
+    "signature1": "Cari saluti",
+    "signature2": "Il Tuo team di CitizenLove"
+  },
+  "notifySubscribersOnHelp": {
+    "subject": "È il momento di aiutare",
+    "bodyLine1": "Abbiamo appena ricevuto una richiesta in entarta",
+    "bodyLine2": "Qualcuno/a nelle Tue vicinanze sta chiedendo il Tuo aiuto, clicca sul button per visualizzare i dettagli:",
+    "buttonText": "Vedi dettagli della richiesta",
+    "socialMediaReference": "Più persone ci conoscono, più possiamo aiutare. Sostienici nella nostra missione e aiuta a diffondere la parola!",
+    "closingLine": "Stai a casa, in salute e lavati sempre le mani!",
+    "signature1": "Cari saluti",
+    "signature2": "Il Tuo team di CitizenLove"
+  },
+  "sms": {
+    "notifySubscribersOnHelp": "È ora di aiutare! Qualcuno nelle vicinanze ha bisogno di aiuto! Visita {{helpRequestUrl}} per vedere i dettagli.",
+    "helpRequestConfirmation": "Ti abbiamo coperto! La tua richiesta è attiva, guarda come appare su {{helpRequestUrl}}",
+    "helpRequestConversation": {
+      "getTitleReply": "Ok. Descrivi più in dettaglio ciò di cui hai bisogno.",
+      "getTitleError": "Siamo spiacenti, qualcosa è andato storto.",
+      "getDescriptionReply": "Sembra buono. Scegli tra le seguenti categorie: SHOPPING, CHILDCARE, LONELYNESS, HEALTH",
+      "getDescriptionError": "Siamo spiacenti, qualcosa è andato storto.",
+      "getCategoriesReply": "Bello. Qual è il tuo indirizzo ZIP? Informeremo i volontari nella tua zona.",
+      "getCategoriesError": "Siamo spiacenti, qualcosa è andato storto.",
+      "getLocationReply": "Grazie. Infine, se vuoi lasciare il tuo indirizzo email.",
+      "getLocationError": "Siamo spiacenti, qualcosa è andato storto.",
+      "getEmailReply": "Questo è tutto! Digitare YES per attivare la richiesta di aiuto!",
+      "getEmailError": "Siamo spiacenti, qualcosa è andato storto."
+    }
+  }
 }
