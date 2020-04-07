@@ -1,5 +1,6 @@
 import TwilioClient from 'twilio';
 
+
 const SWISS_DEFAULT_NUMBER = '+41798070883';
 
 const getVariables = (countryCode, templateID) => {
@@ -21,6 +22,13 @@ const sendSms = async (phoneNumber, text) => {
   }
 };
 
+const replySms = (text) => {
+  const { MessagingResponse } = TwilioClient.twiml;
+  const twiml = new MessagingResponse();
+  twiml.message(text);
+  return twiml.toString();
+};
+
 export default {
-  sendSms, getVariables
+  sendSms, replySms, getVariables
 };

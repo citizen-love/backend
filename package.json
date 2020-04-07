@@ -8,10 +8,8 @@
     "package:local": "webpack --env.NODE_ENV=local",
     "package:staging": "webpack --env.NODE_ENV=development",
     "package:prod": "webpack --env.NODE_ENV=production",
-
     "dev": "nodemon --exec run-s package:local start-functions",
     "start-functions": "functions-framework --target=api --source=.webpack/functions.js",
-    
     "tunnel": "ngrok http 8081"
   },
   "repository": {
@@ -22,6 +20,7 @@
     "actions-on-google": "^2.12.0",
     "axios": "0.19.0",
     "cors": "^2.8.5",
+    "dialogflow": "^1.2.0",
     "dialogflow-fulfillment": "0.6.1",
     "dotenv-webpack": "^1.7.0",
     "express": "^4.17.1",
@@ -39,6 +38,7 @@
     "@google-cloud/functions-framework": "^1.5.0",
     "babel-eslint": "10.0.3",
     "babel-loader": "8.0.6",
+    "body-parser": "^1.19.0",
     "cross-env": "6.0.3",
     "eslint": "6.6.0",
     "eslint-config-airbnb-base": "14.0.0",

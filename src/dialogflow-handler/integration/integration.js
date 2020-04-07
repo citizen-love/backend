@@ -1,25 +1,34 @@
+import dialogflow from 'dialogflow';
+import uuid from 'uuid-random';
+
+import { twillioService } from '../../services/services';
 
 
-const projectId = 'Place your dialogflow projectId here';
-const phoneNumber = "Place your twilio phone number here";
-const accountSid = 'Place your accountSid here';
-const authToken = 'Place your authToken here';
+const integrationHandler = async ({ body, ...rest }, res) => {
 
-const client = require('twilio')(accountSid, authToken);
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
-const sessionClient = new dialogflowSessionClient(projectId);
+  const sessionClient = new dialogflow.SessionsClient();
+  const sessionPath = sessionClient.sessionPath('local-connected-test-dswwqo', uuid());
 
+  const dialogPayload = {
+    session: sessionPath,
+    queryInput: {
+      text: {
+        text: body.Body,
+        languageCode: 'en-US' // de-CH
+      }
+    }
+  };
+  console.log('<<< PAYLOAD >>>', dialogPayload);
+  const dialogFlowResponse = await sessionClient.detectIntent(dialogPayload);
+  console.log('<<< RESPONSE >>>', dialogFlowResponse);
 
+  const result = dialogFlowResponse[0].queryResult;
 
-const integrationHandler = (req, res) => {
-  const body = req.body;
-  const text = body.Body;
-  const id = body.From;
-  const dialogflowResponse = await sessionClient.detectIntent(
-      text, id, body).fulfillmentText;
-  const twiml = new  MessagingResponse();
-  const message = twiml.message(dialogflowResponse);
-  res.send(twiml.toString());
+  if (result) {
+    const reply = await twillioService.replySms(dialogFlowResponse);
+    return res.send(reply);
+  }
+  return res.send('no match');
 };
 
 
