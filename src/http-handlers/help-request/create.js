@@ -18,7 +18,7 @@ const validations = [
   bodyVal('language').exists().custom(val => ALLOWED_LANGUAGES.includes(val)),
   bodyVal('community').exists().isString(),
   bodyVal('location').exists().isLatLong(),
-  bodyVal('email').exists().isEmail(),
+  bodyVal('email').optional().isEmail(),
   bodyVal('phone').optional().isString(),
   bodyVal('category').exists().isArray(),
   bodyVal('customCategory').optional().isString(),

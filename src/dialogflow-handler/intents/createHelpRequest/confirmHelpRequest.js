@@ -7,9 +7,10 @@ import { firebase, fbOps } from '../../../services/services';
 
 const NAME = 'helprequest-confirm';
 
-const intent = agent => async ({ session }) => {
+const intent = agent => async ({ session, originalRequest }) => {
 
   const { database } = firebase;
+  const { phoneNumber } = originalRequest.payload;
   const sessionId = session.split('/').pop();
 
   const requestToConfirm = database.collection(collections.HELP_REQUEST_CONVERSATION).doc(sessionId);
@@ -27,7 +28,7 @@ const intent = agent => async ({ session }) => {
       category,
       language: 'en',
       source: 'sms',
-      phone: ''
+      phone: phoneNumber || ''
     };
 
     await axios({

@@ -5,7 +5,6 @@ import { urlencoded } from 'body-parser';
 import integration from './integration/integration';
 
 import createHelpRequest from './intents/createHelpRequest/createHelpRequest';
-import { versions } from '../constants/constants';
 
 const { WebhookClient } = require('dialogflow-fulfillment');
 
@@ -14,7 +13,7 @@ app.use(urlencoded({ extended: false }));
 
 app.post('/integration', integration);
 
-app.post('/dialogflow', (req, res) => {
+app.post('/dialogflow', express.json(), (req, res) => {
   const agent = new WebhookClient({ request: req, response: res });
 
   const intentMap = new Map();

@@ -1,5 +1,6 @@
 node_modules
 admin-sdk.json
+dialogflow-sdk.json
 .webpack
 .env
 .gcloud

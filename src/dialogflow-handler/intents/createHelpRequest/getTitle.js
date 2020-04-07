@@ -5,8 +5,11 @@ import { firebase, fbOps } from '../../../services/services';
 const NAME = 'helprequest-get-title';
 
 const intent = agent => async ({
-  query, session, locale
+  query, session, locale, ...rest
 }) => {
+
+  console.log(locale);
+  console.log(rest);
 
   const { database } = firebase;
   const sessionId = session.split('/').pop();
