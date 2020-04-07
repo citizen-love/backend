@@ -16,11 +16,11 @@ const sendSmsFilter = (document) => {
 
 const sendEmailFilter = (document) => {
   if (!document.preferences.includes('EMAIL')) {
-    return null;
+    return document;
   }
 
   if (!document.active) {
-    return null;
+    return document;
   }
 
   return document;
