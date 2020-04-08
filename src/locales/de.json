@@ -42,16 +42,14 @@
     "notifySubscribersOnHelp": "Zeit zu helfen! Jemand in Ihrer Nähe braucht Hilfe! Besuchen Sie {{helpRequestUrl}}, um Details zu sehen.",
     "helpRequestConfirmation": "Wir haben Sie abgedeckt! Ihre Anfrage ist aktiv, sehen Sie, wie sie auf {{helpRequestUrl}} aussieht",
     "helpRequestConversation": {
+      "start": "Willkommen! Hier ist bürgerliebe, bitte sag uns, was du brauchst.",
+      "sessionExpired": "Autsch ... lange nicht gesehen! Lass es uns noch einmal versuchen! Bitte sag uns, in was du Hilfe brauchst?",
       "getTitleReply": "Okay. Bitte beschreiben Sie genauer, was Sie brauchen.",
-      "getTitleError": "Entschuldigung, etwas ist schief gelaufen.",
       "getDescriptionReply": "Sieht gut aus. Bitte wählen Sie aus folgenden Kategorien: EINKAUFEN, KINDERPFLEGE, EINSAMKEIT, GESUNDHEIT",
-      "getDescriptionError": "Entschuldigung, etwas ist schief gelaufen.",
       "getCategoriesReply": "Schön. Wie lautet Ihre Postleitzahl? Wir werden Freiwillige in Ihrer Nähe benachrichtigen.",
-      "getCategoriesError": "Entschuldigung, etwas ist schief gelaufen.",
       "getLocationReply": "Danke. Zum Schluss, wenn Sie Ihre E-Mail-Adresse hinterlassen möchten.",
-      "getLocationError": "Entschuldigung, etwas ist schief gelaufen.",
-      "getEmailReply": "Das ist es! Bitte geben Sie YES ein, um Ihre Hilfeanfrage zu aktivieren!",
-      "getEmailError": "Entschuldigung, etwas ist schief gelaufen."
+      "getEmailReply": "Das war's! Bitte geben Sie JA ein, um Ihre Hilfeanfrage zu aktivieren!",
+      "getEmailError": "Entschuldigung, diese E-Mail scheint falsch zu sein. Bitte geben Sie sie noch einmal ein."
     }
   }
 }

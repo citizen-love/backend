@@ -10,7 +10,7 @@ const languageMatcher = (queryText) => {
   }
   return match[0].language; */
   console.log('language matcher turned off');
-  return 'en-US';
+  return 'en';
 };
 
 

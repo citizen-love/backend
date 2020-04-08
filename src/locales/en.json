@@ -42,6 +42,8 @@
     "notifySubscribersOnHelp": "Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details.",
     "helpRequestConfirmation": "We got You covered! Your request is active, see how it looks on {{helpRequestUrl}}",
     "helpRequestConversation": {
+      "start": "Welcome! Here is citizenLove, please tell us in what You need help?",
+      "sessionExpired": "Ouch..long time no see! Let's try again! Please tell us in what You need help?",
       "getTitleReply": "Okay. Please describe in more details, what You need.",
       "getTitleError": "Sorry, something went wrong.",
       "getDescriptionReply": "Looks good. Please choose from the following categories: SHOPPING, CHILDCARE, LONELYNESS, HEALTH",
@@ -51,7 +53,7 @@
       "getLocationReply": "Thanks. Finally, if You want leave your email address.",
       "getLocationError": "Sorry, something went wrong.",
       "getEmailReply": "Thats it! Please type YES, to activate your help request!",
-      "getEmailError": "Sorry, something went wrong."
+      "getEmailError": "Sorry, this email seems to be incorrect. Please type it one more time."
     }
   }
 }
