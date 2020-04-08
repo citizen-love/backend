@@ -14,7 +14,7 @@ jobs:
           command: "npm install"
       - run:
           name: Package application
-          command: "npm run package"
+          command: "npm run package:staging"
       - run:
           name: Copy config to build
           command: "cp package.json ./.webpack/package.json"
@@ -38,7 +38,7 @@ jobs:
           command: "npm install"
       - run:
           name: Package application
-          command: "npm run package"
+          command: "npm run package:prod"
       - run:
           name: Copy config to build
           command: "cp package.json ./.webpack/package.json"
