@@ -1,44 +1,57 @@
 {
-    "confirmation": {
-        "subject": "Confirmation",
-        "titleLine1": "Merci",
-        "titleLine2": "d’avoir demandé",
-        "titleLine3": "un citoyen",
-        "bodyLine1": "Cher Ami",
-        "bodyLine2": "Votre demande d'aide a bien été notée. Maintenant, de nombreux bénévoles la verront en fonction de votre emplacement. Nous vous contacterons par e-mail, une fois que nous aurons trouvé un bénévole.",
-        "buttonText": "Suivre votre demande",
-        "socialMediaReference": "Notre mission fonctionne, si nous l’utilisons tous. Passez le mot et parlez de nous aux autres.",
-        "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains !",
-        "signature1": "Bien cordialement",
-        "signature2": "Votre équipe à CitizenLove"
-    },
-    "helpNotification": {
-        "subject": "Quelqu’un a proposé de l’aide !",
-        "introLine": "Hey. Nous avons trouvé un volontaire très enthousiaste. Cette personne veut vous aider. Lisez son message ci-dessous.",
-        "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains !",
-        "signature1": "Bien cordialement",
-        "signature2": "Votre équipe à CitizenLove"
-    },
-    "emailSubscriptionConfirmation": {
-        "subject": "Merci!",
-        "bodyLine1": "Nous vous avons ajouté à la liste de surveillance locale",
-        "bodyLine2": "Si quelqu'un dans votre voisinage a besoin d'aide, nous vous en informerons immédiatement!",
-        "socialMediaReference": "Notre mission fonctionne, si nous l’utilisons tous. Passez le mot et parlez de nous aux autres!",
-        "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains !",
-        "signature1": "Bien cordialement",
-        "signature2": "Votre équipe à CitizenLove"
-    },
-    "notifySubscribersOnHelp": {
-        "subject": "Prêt pour l'action  ?",
-        "bodyLine1": "Nous venons de recevoir une demande",
-        "bodyLine2": "Quelqu'un dans votre voisinage demande votre aide, cliquez sur le bouton pour accéder à la demande :",
-        "buttonText": "Je peux vous aider",
-        "socialMediaReference": "Notre mission fonctionne, si nous l’utilisons tous. Passez le mot et parlez de nous aux autres.",
-        "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains  !",
-        "signature1": "Bien cordialement",
-        "signature2": "Votre équipe à CitizenLove"
-    },
-    "sms": {
-        "notifySubscribersOnHelp": "Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details."
-      }
+  "confirmation": {
+    "subject": "Confirmation",
+    "titleLine1": "Merci",
+    "titleLine2": "d’avoir demandé",
+    "titleLine3": "un citoyen",
+    "bodyLine1": "Cher Ami",
+    "bodyLine2": "Votre demande d'aide a bien été notée. Maintenant, de nombreux bénévoles la verront en fonction de votre emplacement. Nous vous contacterons par e-mail, une fois que nous aurons trouvé un bénévole.",
+    "buttonText": "Suivre votre demande",
+    "socialMediaReference": "Notre mission fonctionne, si nous l’utilisons tous. Passez le mot et parlez de nous aux autres.",
+    "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains !",
+    "signature1": "Bien cordialement",
+    "signature2": "Votre équipe à CitizenLove"
+  },
+  "helpNotification": {
+    "subject": "Quelqu’un a proposé de l’aide !",
+    "introLine": "Hey. Nous avons trouvé un volontaire très enthousiaste. Cette personne veut vous aider. Lisez son message ci-dessous.",
+    "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains !",
+    "signature1": "Bien cordialement",
+    "signature2": "Votre équipe à CitizenLove"
+  },
+  "emailSubscriptionConfirmation": {
+    "subject": "Merci!",
+    "bodyLine1": "Nous vous avons ajouté à la liste de surveillance locale",
+    "bodyLine2": "Si quelqu'un dans votre voisinage a besoin d'aide, nous vous en informerons immédiatement!",
+    "socialMediaReference": "Notre mission fonctionne, si nous l’utilisons tous. Passez le mot et parlez de nous aux autres!",
+    "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains !",
+    "signature1": "Bien cordialement",
+    "signature2": "Votre équipe à CitizenLove"
+  },
+  "notifySubscribersOnHelp": {
+    "subject": "Prêt pour l'action  ?",
+    "bodyLine1": "Nous venons de recevoir une demande",
+    "bodyLine2": "Quelqu'un dans votre voisinage demande votre aide, cliquez sur le bouton pour accéder à la demande :",
+    "buttonText": "Je peux vous aider",
+    "socialMediaReference": "Notre mission fonctionne, si nous l’utilisons tous. Passez le mot et parlez de nous aux autres.",
+    "closingLine": "Restez à la maison, restez en bonne santé et lavez vos mains  !",
+    "signature1": "Bien cordialement",
+    "signature2": "Votre équipe à CitizenLove"
+  },
+  "sms": {
+    "notifySubscribersOnHelp": "Il est temps d'aider! Quelqu'un dans votre voisinage a besoin d'aide! Visitez {{helpRequestUrl}} pour voir les détails.",
+    "helpRequestConfirmation": "Nous vous couvrons! Votre demande est active, voyez à quoi elle ressemble sur {{helpRequestUrl}}",
+    "helpRequestConversation": {
+      "getTitleReply": "D'accord. Veuillez décrire plus en détail ce dont vous avez besoin.",
+      "getTitleError": "Désolé, une erreur s'est produite.",
+      "getDescriptionReply": "A l'air bien. Veuillez choisir parmi les catégories suivantes: SHOPPING, CHILDCARE, LONELYNESS, HEALTH",
+      "getDescriptionError": "Désolé, une erreur s'est produite.",
+      "getCategoriesReply": "Nice. Quelle est votre adresse ZIP? Nous informerons les volontaires de votre région.",
+      "getCategoriesError": "Désolé, une erreur s'est produite.",
+      "getLocationReply": "Merci. Enfin, si vous voulez laisser votre adresse e-mail.",
+      "getLocationError": "Désolé, une erreur s'est produite.",
+      "getEmailReply": "C'est ça! Veuillez taper YES, pour activer votre demande d'aide!",
+      "getEmailError": "Désolé, une erreur s'est produite."
+    }
+  }
 }

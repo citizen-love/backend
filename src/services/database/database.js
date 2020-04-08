@@ -1,19 +1,14 @@
 import admin from 'firebase-admin';
 import { GeoFirestore } from 'geofirestore';
+import { environments } from '../../constants/constants';
 
 
-/* if (process.env.NODE_ENV === 'local') {
-const serviceAccount = require('../../../admin-sdk.json');
+const { LOCAL, ENVIRONMENT } = environments;
 
-console.log('FUNCTIONS INITIALIZED LOCALLY');
-
-adminInformation = {
-  credential: admin.credential.cert(serviceAccount),
+admin.initializeApp(LOCAL === ENVIRONMENT ? {
+  credential: admin.credential.cert(require('../../../admin-sdk.json')),
   databaseURL: 'https://citizen-love.firebaseio.com'
-};
-// } */
-
-admin.initializeApp({});
+} : {});
 
 const database = admin.firestore();
 const geoDatabase = new GeoFirestore(database);
