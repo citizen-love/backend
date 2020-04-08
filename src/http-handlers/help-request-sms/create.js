@@ -29,7 +29,7 @@ const integrationHandler = async ({ body }, res) => {
     return res.send(reply);
   }
 
-  if (moment(existingDocument.expires).isBefore(moment())) {
+  if (!moment(existingDocument.expires).isBefore(moment())) {
     await fbOps.deleteDoc(existingReference);
     const reply = twillioService.replySms(copy.sms.helpRequestConversation.sessionExpired);
     return res.send(reply);
