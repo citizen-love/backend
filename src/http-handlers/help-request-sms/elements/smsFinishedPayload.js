@@ -3,7 +3,7 @@ export default payload => ({
   description: payload.description,
   country: 'CH',
   community: 'Not defined',
-  location: `${payload.location.lat},${payload.location.len}`,
+  location: `${payload.location.lat},${payload.location.lng}`,
   email: payload.email,
   category: payload.category,
   language: 'de',

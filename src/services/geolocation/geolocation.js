@@ -7,7 +7,7 @@ const getRootUrl = operation => `https://maps.googleapis.com/maps/api/geocode/js
 
 const DEFAULT_SWISS_LOCATION = {
   lat: '47.371744',
-  len: '8.542136'
+  lng: '8.542136'
 };
 
 const searchByZIP = async (zip, country) => {
