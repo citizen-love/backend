@@ -1,6 +1,7 @@
 const template = ({
   country,
   category,
+  source = '',
   customCategory,
   helpRequestUrl,
   title,
@@ -15,6 +16,15 @@ const template = ({
     },
     {
       type: 'divider'
+    },
+    {
+      type: 'context',
+      elements: [
+        {
+          type: 'mrkdwn',
+          text: `*Source:* ${source}`
+        }
+      ]
     },
     {
       type: 'context',
