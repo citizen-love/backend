@@ -40,10 +40,11 @@ const integrationHandler = async ({ body }, res) => {
   }
 
   if (existingDocument.stage === FINAL_STAGE) {
+    const requestPayload = finishedPayload(existingDocument);
     await axios({
       method: 'POST',
       url: `${process.env.SELF_URL}/help-request`,
-      data: finishedPayload(existingDocument)
+      data: requestPayload
     });
     await fbOps.deleteDoc(existingReference);
     return res.send('');

@@ -41,6 +41,7 @@
   "sms": {
     "notifySubscribersOnHelp": "Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details.",
     "helpRequestConfirmation": "We got You covered! Your request is active, see how it looks on {{helpRequestUrl}}",
+    "helpNotification": "Hey! Someone offered his/her help. Please read the message and contact the person if it is relevant. >>> ",
     "helpRequestConversation": {
       "start": "Welcome! Here is citizenLove, please tell us in what You need help?",
       "sessionExpired": "Ouch..long time no see! Let's try again! Please tell us in what You need help?",

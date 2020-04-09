@@ -7,8 +7,7 @@ const {
   getDescriptionReply,
   getCategoriesReply,
   getLocationReply,
-  getEmailReply,
-  getEmailError
+  getEmailReply
 } = copy.sms.helpRequestConversation;
 
 export default {
@@ -37,16 +36,15 @@ export default {
     };
   },
   'get-email': (value) => {
+    const normalizedEmail = value.replace(' ', '').toLowerCase();
     const emailRegex = new RegExp(
       /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
     );
-
-    if (!emailRegex.test(value)) {
-      return {
-        data: { email: 'invalid', stage: 'get-email' },
-        smsReply: getEmailError
-      };
-    }
-    return { data: { email: value, stage: 'get-confirmation' }, smsReply: getEmailReply };
+    return {
+      data: {
+        email: !emailRegex.test(normalizedEmail) ? 'INVALID' : normalizedEmail,
+        stage: 'get-confirmation' },
+      smsReply: getEmailReply
+    };
   }
 };

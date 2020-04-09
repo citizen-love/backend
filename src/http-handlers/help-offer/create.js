@@ -1,9 +1,10 @@
 import { body, param } from 'express-validator';
 import { collections } from '../../constants/constants';
-import { firebase, fbOps, emailService } from '../../services/services';
+import { firebase, fbOps, emailService, twillioService } from '../../services/services';
 import { validateSchema } from '../../utils/utils';
 
 const EMAIL_TEMPLATE_ID = 'helpNotification';
+const SMS_BODY_ID = 'helpNotification';
 
 const validations = [
   param('helpRequestId')
@@ -28,12 +29,12 @@ const handler = async (
 
     const contactDetails = await fbOps.getQuery(
       database.collection(collections.REQUESTER_CONTACT),
-      { condition: 'helpRequestId', operator: '==', value: helpRequestId }
+      { condition: 'id', operator: '==', value: helpRequestId }
     );
 
     if (contactDetails[0]) {
 
-      const { language } = await fbOps.get(
+      const { language, preferences } = await fbOps.get(
         database.collection(collections.HELP_REQUEST).doc(helpRequestId), true
       );
 
@@ -42,10 +43,17 @@ const handler = async (
         offerBody: `${offerBody}. ${email}, ${phone}`
       };
 
-      await emailService.sendEmail({
-        receiver: contactDetails[0].email,
-        templateId: emailService.templateIds[EMAIL_TEMPLATE_ID]
-      }, emailVariables);
+      if (preferences.includes('email')) {
+        await emailService.sendEmail({
+          receiver: contactDetails[0].email,
+          templateId: emailService.templateIds[EMAIL_TEMPLATE_ID]
+        }, emailVariables);
+      }
+      if (preferences.includes('sms')) {
+        const smsBody = twillioService.getVariables(language, SMS_BODY_ID);
+        await twillioService.sendSms(contactDetails[0].phoneNumber,
+          `${smsBody} ${offerBody}. ${email}, ${phone}`);
+      }
       await fbOps.update(
         database.collection(collections.HELP_REQUEST).doc(helpRequestId),
         { 'd.counter': incrementField(1) }
