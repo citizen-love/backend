@@ -18,6 +18,10 @@ const getVariables = (countryCode, templateID) => {
 };
 
 const sendEmail = async ({ receiver, templateId }, variables = {}) => {
+
+  if (receiver === '') {
+    return null;
+  }
   const emailData = {
     from: { email: CITIZEN_SENDER },
     personalizations: [{
