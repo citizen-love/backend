@@ -1,6 +1,7 @@
 import axios from 'axios';
 import helpRequest from './templates/helpRequest';
 import watchlistSignup from './templates/watchlistSignup';
+import signupAuth from './templates/signupAuth';
 
 import { environments } from '../../constants/constants';
 
@@ -27,6 +28,6 @@ const slackRequest = async (messageBody) => {
 export default {
   send: slackRequest,
   templates: {
-    helpRequest, watchlistSignup
+    helpRequest, watchlistSignup, signupAuth
   }
 };

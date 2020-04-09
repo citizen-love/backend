@@ -15,6 +15,7 @@ import subscribeWithEmail from './src/http-handlers/subscribe-notifications/subs
 // background functions
 
 import notifySubscribersOnHelp from './src/background-handlers/notify-subscribers/onhelp';
+import onAuthSignup from './src/background-handlers/authentication/onSignup';
 
 import {
   HELP_REQUEST,
@@ -49,3 +50,4 @@ exports.api = functions.https.onRequest(app);
 // backround functions
 
 exports.notifySubscribersOnHelp = notifySubscribersOnHelp;
+exports.onAuthSignup = onAuthSignup;
