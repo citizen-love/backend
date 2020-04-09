@@ -23,6 +23,7 @@ const validations = [
   bodyVal('category').exists().isArray(),
   bodyVal('customCategory').optional().isString(),
   bodyVal('source').optional().custom(val => ALLOWED_SOURCES.includes(val)),
+  bodyVal('preferences').optional().isArray(),
   validateSchema
 ];
 
@@ -47,17 +48,19 @@ const handler = async ({ body }, res) => {
       trackingURL: getUniqueURL(uniqueIdentifier, 'my-request')
     };
 
-    if (helpRequestInformation.source === 'sms') {
+    if (helpRequestInformation.preferences.includes('sms')) {
       const smsBody = twillioService.getVariables(
         helpRequestInformation.language, SMS_BODY_ID
       ).replace('{{helpRequestUrl}}', getUniqueURL(helpRequest.id, 'help'));
       await twillioService.sendSms(requesterContactInformation.phoneNumber, smsBody);
     }
 
-    await emailService.sendEmail({
-      receiver: requesterContactInformation.email,
-      templateId: emailService.templateIds[EMAIL_TEMPLATE_ID]
-    }, emailVariables);
+    if (helpRequestInformation.preferences.includes('email')) {
+      await emailService.sendEmail({
+        receiver: requesterContactInformation.email,
+        templateId: emailService.templateIds[EMAIL_TEMPLATE_ID]
+      }, emailVariables);
+    }
 
     await slackService.send(slackService.templates.helpRequest({
       ...helpRequestInformation,

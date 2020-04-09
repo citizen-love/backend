@@ -12,5 +12,6 @@ export default source => ({
   createdAt: new Date(),
   counter: 0,
   status: 'started',
-  source: source.source || 'web'
+  source: source.source || 'web',
+  preferences: source.preferences || ['email']
 });
