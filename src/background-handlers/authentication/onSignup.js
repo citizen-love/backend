@@ -8,10 +8,9 @@ export default functions.auth.user().onCreate(async (details) => {
   try {
     const { SUBSCRIBED_HELPERS } = collections;
     const { geoDatabase } = firebase;
-    const photoURL = details.photoURL || '';
 
     await geoDatabase.collection(SUBSCRIBED_HELPERS).doc(details.uid).set(extendedHelpGiverModel(details));
-    await slackService.send(slackService.templates.signupAuth(details.email, photoURL));
+    await slackService.send(slackService.templates.signupAuth(details.email));
     return null;
   } catch (err) {
     console.log(err);

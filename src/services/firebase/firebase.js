@@ -5,14 +5,15 @@ import { environments } from '../../constants/constants';
 
 const { LOCAL, ENVIRONMENT } = environments;
 
-/* admin.initializeApp(LOCAL === ENVIRONMENT ? {
+admin.initializeApp(LOCAL === ENVIRONMENT ? {
   credential: admin.credential.cert(require('../../../admin-sdk.json')),
-  databaseURL: 'https://citizen-love.firebaseio.com'
-} : {}); */
+  databaseURL: 'https://citizen-love-dev.firebaseio.com'
+} : {});
 
-admin.initializeApp({});
+// admin.initializeApp({});
 
 const database = admin.firestore();
+const auth = admin.auth();
 const geoDatabase = new GeoFirestore(database);
 const incrementField = value => admin.firestore.FieldValue.increment(value);
 const getLocationEntry = (location) => {
@@ -22,6 +23,7 @@ const getLocationEntry = (location) => {
 
 export default {
   database,
+  auth,
   geoDatabase,
   incrementField,
   getLocationEntry
