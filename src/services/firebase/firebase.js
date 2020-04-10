@@ -5,12 +5,12 @@ import { environments } from '../../constants/constants';
 
 const { LOCAL, ENVIRONMENT } = environments;
 
-admin.initializeApp(LOCAL === ENVIRONMENT ? {
+/* admin.initializeApp(LOCAL === ENVIRONMENT ? {
   credential: admin.credential.cert(require('../../../admin-sdk.json')),
   databaseURL: 'https://citizen-love-dev.firebaseio.com'
-} : {});
+} : {}); */
 
-// admin.initializeApp({});
+admin.initializeApp({});
 
 const database = admin.firestore();
 const auth = admin.auth();

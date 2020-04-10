@@ -141,6 +141,40 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "UPDATE-USER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "firebase-idtoken",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"firstName\": \"string\",\n\"lastName\": \"string\",\n\"bio\": \"long long string\",\n\"avatar\": \"url to your best ever pic\",\n\"radius\": 30,\n\"phoneNumber\": \"phone num\",\n\"language\": \"en|de|it|fr\",\n\"coordinates\": \"1,1\",\n\"active\": \"true/false\",\n\"preferences\": \"[sms,email]|[sms]|[email]\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/me",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"me"
+					]
+				},
+				"description": "All body fields are optional"
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
