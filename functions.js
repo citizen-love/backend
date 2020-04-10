@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 
 import { versions } from './src/constants/constants';
+import { validateIdToken } from './src/utils/utils';
+
 
 // http handlers
 
@@ -11,17 +13,20 @@ import getHelpStatus from './src/http-handlers/help-request-status/get';
 import updateHelpStatus from './src/http-handlers/help-request-status/update';
 import createOffer from './src/http-handlers/help-offer/create';
 import subscribeWithEmail from './src/http-handlers/subscribe-notifications/subscribe';
+import updateUserProfile from './src/http-handlers/user-profile/update';
 
 // background functions
 
 import notifySubscribersOnHelp from './src/background-handlers/notify-subscribers/onhelp';
+import onAuthSignup from './src/background-handlers/authentication/onSignup';
 
 import {
   HELP_REQUEST,
   HELP_REQUEST_SMS,
   HELP_REQUEST_STATUS,
   HELP_OFFER,
-  SUBSCRIBE_EMAIL
+  SUBSCRIBE_EMAIL,
+  USER_PROFILE
 } from './src/routes';
 
 const functions = require('firebase-functions');
@@ -42,6 +47,8 @@ app.post(HELP_OFFER, createOffer);
 
 app.post(SUBSCRIBE_EMAIL, subscribeWithEmail);
 
+app.post(USER_PROFILE, [validateIdToken, updateUserProfile]);
+
 // REST API
 
 exports.api = functions.https.onRequest(app);
@@ -49,3 +56,4 @@ exports.api = functions.https.onRequest(app);
 // backround functions
 
 exports.notifySubscribersOnHelp = notifySubscribersOnHelp;
+exports.onAuthSignup = onAuthSignup;
