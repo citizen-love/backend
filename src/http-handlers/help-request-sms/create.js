@@ -14,18 +14,15 @@ const FINAL_STAGE = 'get-confirmation';
 const integrationHandler = async ({ body }, res) => {
   const { database } = firebase;
   const phoneNumber = body.From;
-  const language = 'de'; // languageMatcher(body.Body);
-
-  // eslint-disable-next-line import/no-dynamic-require
-  const copy = require(`../../locales/${language}.json`);
 
   const existingReference = database.collection(collections.HELP_REQUEST_CONVERSATION).doc(phoneNumber);
   const existingDocument = await fbOps.get(existingReference);
 
   if (!existingDocument) {
+    const { sms } = require('../../locales/en.json');
     const convSession = helpRequestConversation(phoneNumber);
     await fbOps.create(existingReference, convSession);
-    const reply = twillioService.replySms(copy.sms.helpRequestConversation.start);
+    const reply = twillioService.replySms(sms.helpRequestConversation.start);
     return res.send(reply);
   }
 
@@ -34,8 +31,10 @@ const integrationHandler = async ({ body }, res) => {
   const expires = existingDocument.expires._seconds * 1000;
 
   if (expires < nowMS) {
+    // eslint-disable-next-line import/no-dynamic-require
+    const { sms } = require(`../../locales/${existingDocument.language || 'en'}.json`);
     await fbOps.deleteDoc(existingReference);
-    const reply = twillioService.replySms(copy.sms.helpRequestConversation.sessionExpired);
+    const reply = twillioService.replySms(sms.helpRequestConversation.sessionExpired);
     return res.send(reply);
   }
 
@@ -50,7 +49,7 @@ const integrationHandler = async ({ body }, res) => {
     return res.send('');
   }
 
-  const { data, smsReply } = await stageMatcher[existingDocument.stage](body.Body);
+  const { data, smsReply } = await stageMatcher[existingDocument.stage](body.Body, existingDocument.language);
   await fbOps.update(existingReference, data);
   const reply = twillioService.replySms(smsReply);
   return res.send(reply);

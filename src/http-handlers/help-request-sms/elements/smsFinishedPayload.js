@@ -9,7 +9,8 @@ export default payload => ({
   location: `${payload.location.lat},${payload.location.lng}`,
   ...(assignEmail(payload.email) && { email: payload.email }),
   category: payload.category,
-  language: 'de',
+  language: payload.language,
+  preferences: ['sms', assignEmail(payload.email) && 'email'].filter(p => p),
   source: 'sms',
   phone: payload.phoneNumber || ''
 });

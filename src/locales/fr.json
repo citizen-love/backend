@@ -39,19 +39,19 @@
     "signature2": "Votre équipe à CitizenLove"
   },
   "sms": {
-    "notifySubscribersOnHelp": "Il est temps d'aider! Quelqu'un dans votre voisinage a besoin d'aide! Visitez {{helpRequestUrl}} pour voir les détails.",
-    "helpRequestConfirmation": "Nous vous couvrons! Votre demande est active, voyez à quoi elle ressemble sur {{helpRequestUrl}}",
+    "notifySubscribersOnHelp": "LANG >> FR Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details.",
+    "helpRequestConfirmation": "LANG >> FR We got You covered! Your request is active, see how it looks on {{helpRequestUrl}}",
+    "helpNotification": "LANG >> FR Hey! Someone offered his/her help. His message:  ",
     "helpRequestConversation": {
-      "getTitleReply": "D'accord. Veuillez décrire plus en détail ce dont vous avez besoin.",
-      "getTitleError": "Désolé, une erreur s'est produite.",
-      "getDescriptionReply": "A l'air bien. Veuillez choisir parmi les catégories suivantes: SHOPPING, CHILDCARE, LONELYNESS, HEALTH",
-      "getDescriptionError": "Désolé, une erreur s'est produite.",
-      "getCategoriesReply": "Nice. Quelle est votre adresse ZIP? Nous informerons les volontaires de votre région.",
-      "getCategoriesError": "Désolé, une erreur s'est produite.",
-      "getLocationReply": "Merci. Enfin, si vous voulez laisser votre adresse e-mail.",
-      "getLocationError": "Désolé, une erreur s'est produite.",
-      "getEmailReply": "C'est ça! Veuillez taper YES, pour activer votre demande d'aide!",
-      "getEmailError": "Désolé, une erreur s'est produite."
+      "start": "LANG >> FR Welcome at Citizen! Please choose your language. EN for english, DE for german, FR for french, IT for italian.",
+      "sessionExpired": "LANG >> FR Ouch..long time no see! Write anything to get started again!",
+      "getLanguageReply": "LANG >> FR Thanks! Now please tell us, what do You need help with?",
+      "getLanguageErrorReply": "LANG >> FR Sorry, we dont have this language. Please choose EN for english, DE for german, FR for french or IT for italian",
+      "getTitleReply": "LANG >> FR Okay. Please describe in more details, what You need.",
+      "getDescriptionReply": "LANG >> FR Looks good. Please choose from the following categories: SHOPPING, CHILDCARE, LONELYNESS, HEALTH",
+      "getCategoriesReply": "LANG >> FR Nice. What is your ZIP address? We will notify volunteers in your area.",
+      "getLocationReply": "LANG >> FR Thanks. Finally, if You want leave your email address.",
+      "getEmailReply": "LANG >> FR Thats it! Please type YES, to activate your help request!"
     }
   }
 }
