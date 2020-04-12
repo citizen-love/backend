@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 
 import { versions } from './src/constants/constants';
 import { validateIdToken } from './src/utils/utils';
@@ -34,6 +35,8 @@ const functions = require('firebase-functions');
 const app = express();
 
 app.use(cors({ origin: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => res.send(versions.http));
 
@@ -50,6 +53,8 @@ app.post(SUBSCRIBE_EMAIL, subscribeWithEmail);
 app.post(USER_PROFILE, [validateIdToken, updateUserProfile]);
 
 // REST API
+
+export const testApp = app;
 
 exports.api = functions.https.onRequest(app);
 

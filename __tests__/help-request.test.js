@@ -1,14 +1,50 @@
-desribe('API >> Submitting help request', () => {
-  it('After submitting a help request, I should get an email confirmation if emailpreference is set', () => {
-    // write the test case => PASSED
+import request from 'supertest';
+
+import payload from './payloads/helpRequest';
+import cleanCollection from './helpers/cleanDatabase';
+
+import { testApp as app } from '../functions';
+import { firebase, fbOps } from '../src/services/services';
+
+jest.mock('../src/services/emailService/emailService', () => ({
+  getVariables: () => '',
+  templateIds: '',
+  sendEmail: async () => ''
+}));
+
+jest.mock('../src/services/slack/slack', () => ({
+  templates: {
+    helpRequest: () => ''
+  },
+  send: async () => ''
+}));
+
+jest.mock('../src/services/twillio/twillio', () => ({
+  sendSms: async () => '',
+  replySms: async () => '',
+  getVariables: () => ''
+}));
+
+
+describe('API >> Submitting help request', () => {
+  beforeAll(async () => {
+    await cleanCollection('help-requests');
   });
-  it('After submitting a help request, I should get an sms confirmation if smspreference is set', () => {
-    // write the test case => PASSED
+  afterAll(async () => {
+    await cleanCollection('help-requests');
   });
-  it('After submitting a help request, a privateRequest object should be created in the database', () => {
-    // write the test case => PASSED
-  });
-  it('After submitting a help request, a publicRequest object should be created in the database', () => {
-    // write the test case => PASSED
+  it('On sending a help request, outcome and database object should match the desired outcome', async () => {
+
+    const { body } = await request(app)
+      .post('/help-request')
+      .set('Accept', 'application/json')
+      .send(payload.income);
+
+    const { geoDatabase } = firebase;
+    const reference = geoDatabase.collection('help-requests').doc(body.id);
+    const documentOutcome = await fbOps.get(reference);
+
+    expect(body.id).toBeDefined();
+    expect(documentOutcome).toEqual(expect.objectContaining(payload.databaseOutcome));
   });
 });
