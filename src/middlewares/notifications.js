@@ -15,12 +15,12 @@ const sendSmsFilter = (document) => {
 };
 
 const sendEmailFilter = (document) => {
-  if (!document.preferences.includes('email')) {
-    return null;
+  if (!document.preferences.includes('EMAIL')) {
+    return document;
   }
 
   if (!document.active) {
-    return null;
+    return document;
   }
 
   return document;
