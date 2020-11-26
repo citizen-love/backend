@@ -6,6 +6,7 @@ const validate = (req, res, next) => {
     validationResult(req).throw();
     return next();
   } catch (e) {
+    console.log(e.array());
     return res.status(422).send('Invalid request');
   }
 };

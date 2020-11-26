@@ -1,5 +1,5 @@
 const sendSmsFilter = (document) => {
-  if (!document.preferences.includes('SMS')) {
+  if (!document.preferences.includes('sms')) {
     return null;
   }
 

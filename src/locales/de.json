@@ -1,44 +1,57 @@
 {
-    "confirmation": {
-        "subject": "Bestätigung deiner Anfrage",
-        "titleLine1": "Danke",
-        "titleLine2": "dass du",
-        "titleLine3": "mitmachst!",
-        "bodyLine1": "Liebe/r Bürger/in",
-        "bodyLine2": "Deine Anfrage nach Unterstützung wurde publiziert und kann nun von Freiwilligen auf Basis deines angegebenen Standortes gesehen werden. Wir werden dir sofort eine E-Mail senden, wenn jemand helfen kann. Du kannst deine Anfrage jederzeit hier ansehen:",
-        "buttonText": "Verfolge deine Anfrage",
-        "socialMediaReference": "Je mehr Leute von uns wissen, desto besser können wir helfen. Unterstütze unsere Mission und empfehle uns weiter!",
-        "closingLine": "Bleib daheim, bleib gesund und wasche immer deine Hände!",
-        "signature1": "Liebe Grüsse",
-        "signature2": "dein CitizenLove-Team"
-    },
-    "helpNotification": {
-        "subject": "Jemand bietet Hilfe!",
-        "introLine": "Hi Bürger/in! Jemand hat deine Anfrage gesehen und bietet dir Hilfe an. Sieh seine/ihre Nachricht unten:",
-        "closingLine": "Bleib daheim, bleib gesund und wasche immer deine Hände!",
-        "signature1": "Liebe Grüsse",
-        "signature2": "dein CitizenLove-Team"
-    },
-    "emailSubscriptionConfirmation": {
-        "subject": "Du rockst!",
-        "bodyLine1": "Wir haben dich zur lokalen Community hinzugefügt",
-        "bodyLine2": "Wenn jemand in deiner Nähe deine Hilfe braucht, werden wir dich sofort informieren. Danke, dass du deine Unterstützung anbietest!",
-        "socialMediaReference": "Je mehr Leute von uns wissen, desto besser können wir helfen. Unterstütze unsere Mission und empfehle uns weiter!",
-        "closingLine": "Bleib daheim, bleib gesund und wasche immer deine Hände!",
-        "signature1": "Liebe Grüsse",
-        "signature2": "dein CitizenLove-Team"
-    },
-    "notifySubscribersOnHelp": {
-        "subject": "Zeit, um zu helfen",
-        "bodyLine1": "Wir haben gerade einen neue Unterstützungsanfrage in deiner Nähe bekommen",
-        "bodyLine2": "Jemand in deiner Nähe braucht Hilfe! Klick auf den Button um mehr zu erfahren:",
-        "buttonText": "Anfrage ansehen",
-        "socialMediaReference": "Je mehr Leute von uns wissen, desto besser können wir helfen. Unterstütze unsere Mission und empfehle uns weiter!",
-        "closingLine": "Bleib daheim, bleib gesund und wasche immer deine Hände!",
-        "signature1": "Liebe Grüsse",
-        "signature2": "dein CitizenLove-Team"
-    },
-    "sms": {
-        "notifySubscribersOnHelp": "Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details."
-      }
+  "confirmation": {
+    "subject": "Bestätigung deiner Anfrage",
+    "titleLine1": "Danke",
+    "titleLine2": "dass du",
+    "titleLine3": "mitmachst!",
+    "bodyLine1": "Liebe/r Bürger/in",
+    "bodyLine2": "Deine Anfrage nach Unterstützung wurde publiziert und kann nun von Freiwilligen auf Basis deines angegebenen Standortes gesehen werden. Wir werden dir sofort eine E-Mail senden, wenn jemand helfen kann. Du kannst deine Anfrage jederzeit hier ansehen:",
+    "buttonText": "Verfolge deine Anfrage",
+    "socialMediaReference": "Je mehr Leute von uns wissen, desto besser können wir helfen. Unterstütze unsere Mission und empfehle uns weiter!",
+    "closingLine": "Bleib daheim, bleib gesund und wasche immer deine Hände!",
+    "signature1": "Liebe Grüsse",
+    "signature2": "dein CitizenLove-Team"
+  },
+  "helpNotification": {
+    "subject": "Jemand bietet Hilfe!",
+    "introLine": "Hi Bürger/in! Jemand hat deine Anfrage gesehen und bietet dir Hilfe an. Sieh seine/ihre Nachricht unten:",
+    "closingLine": "Bleib daheim, bleib gesund und wasche immer deine Hände!",
+    "signature1": "Liebe Grüsse",
+    "signature2": "dein CitizenLove-Team"
+  },
+  "emailSubscriptionConfirmation": {
+    "subject": "Du rockst!",
+    "bodyLine1": "Wir haben dich zur lokalen Community hinzugefügt",
+    "bodyLine2": "Wenn jemand in deiner Nähe deine Hilfe braucht, werden wir dich sofort informieren. Danke, dass du deine Unterstützung anbietest!",
+    "socialMediaReference": "Je mehr Leute von uns wissen, desto besser können wir helfen. Unterstütze unsere Mission und empfehle uns weiter!",
+    "closingLine": "Bleib daheim, bleib gesund und wasche immer deine Hände!",
+    "signature1": "Liebe Grüsse",
+    "signature2": "dein CitizenLove-Team"
+  },
+  "notifySubscribersOnHelp": {
+    "subject": "Zeit, um zu helfen",
+    "bodyLine1": "Wir haben gerade einen neue Unterstützungsanfrage in deiner Nähe bekommen",
+    "bodyLine2": "Jemand in deiner Nähe braucht Hilfe! Klick auf den Button um mehr zu erfahren:",
+    "buttonText": "Anfrage ansehen",
+    "socialMediaReference": "Je mehr Leute von uns wissen, desto besser können wir helfen. Unterstütze unsere Mission und empfehle uns weiter!",
+    "closingLine": "Bleib daheim, bleib gesund und wasche immer deine Hände!",
+    "signature1": "Liebe Grüsse",
+    "signature2": "dein CitizenLove-Team"
+  },
+  "sms": {
+    "notifySubscribersOnHelp": "LANG >> DE: Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details.",
+    "helpRequestConfirmation": "LANG >> DE: We got You covered! Your request is active, see how it looks on {{helpRequestUrl}}",
+    "helpNotification": "LANG >> DE: Hey! Someone offered his/her help. His message:  ",
+    "helpRequestConversation": {
+      "start": "LANG >> DE: Welcome at Citizen! Please choose your language. EN for english, DE for german, FR for french, IT for italian.",
+      "sessionExpired": "LANG >> DE: Ouch..long time no see! Write anything to get started again!",
+      "getLanguageReply": "LANG >> DE: Thanks! Now please tell us, what do You need help with?",
+      "getLanguageErrorReply": "LANG >> DE: Sorry, we dont have this language. Please choose EN for english, DE for german, FR for french or IT for italian",
+      "getTitleReply": "LANG >> DE: Okay. Please describe in more details, what You need.",
+      "getDescriptionReply": "LANG >> DE: Looks good. Please choose from the following categories: SHOPPING, CHILDCARE, LONELYNESS, HEALTH",
+      "getCategoriesReply": "LANG >> DE: Nice. What is your ZIP address? We will notify volunteers in your area.",
+      "getLocationReply": "LANG >> DE: Thanks. Finally, if You want leave your email address.",
+      "getEmailReply": "LANG >> DE: Thats it! Please type YES, to activate your help request!"
+    }
+  }
 }

@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"TITLE OF YOUR REQUEST: STRING\",\n    \"description\": \"DESCRIPTION OF THE REQUEST: STRING\",\n    \"country\": \"COUNTRY: STRING (FREE STRING)\",\n    \"community\": \"COMMUNITY: STRING (FREE STRING)\",\n    \"location\": \"COORDINATES SEPARATED BY COMMA\",\n    \"email\": \"VALID EMAIL ADDRESS\",\n    \"category\": [\"ARRAY\", \"OF\", \"STRING\"],\n    \"language\": \"LANGUAGE CODE: ALLOWED ['en', 'de', 'fr', 'it', 'ru_CH']\"\n}",
+					"raw": "{\n    \"title\": \"Test help request\",\n    \"description\": \"Well this is the description of the body, so better if we have something here than not.\",\n    \"country\": \"Poland\",\n    \"community\": \"Warszawa\",\n    \"location\": \"***, ***\",\n    \"email\": \"***@***.com\",\n    \"category\": [\"test\", \"sms\", \"email\"],\n    \"phone\": \"+48***\",\n    \"source\": \"web\",\n    \"preferences\": [\"email\"],\n    \"language\": \"en\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,15 +21,13 @@
 					}
 				},
 				"url": {
-					"raw": "https://us-central1-citizen-love-dev.cloudfunctions.net/api/help-request",
-					"protocol": "https",
+					"raw": "http://localhost:8080/help-request",
+					"protocol": "http",
 					"host": [
-						"us-central1-citizen-love-dev",
-						"cloudfunctions",
-						"net"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
-						"api",
 						"help-request"
 					]
 				},
@@ -44,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"location\": \"COORDINATES SEPARATED BY COMMA\",\n    \"email\": \"VALID EMAIL ADDRESS\",\n    \"radius\": 99,\n    \"language\": \"LANGUAGE CODE: ALLOWED ['en', 'de', 'fr', 'it', 'ru_CH']\"\n}",
+					"raw": "{\n    \"location\": \"***,***\",\n    \"email\": \"***@***.com\",\n    \"radius\": 30,\n    \"language\": \"en\",\n    \"preferences\": [\"sms\"],\n    \"phoneNumber\": \"+48***\",\n    \"uid\": \"CUSTOMUSER-03\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -52,15 +50,13 @@
 					}
 				},
 				"url": {
-					"raw": "https://us-central1-citizen-love-dev.cloudfunctions.net/api/subscribe",
-					"protocol": "https",
+					"raw": "http://localhost:8080/subscribe",
+					"protocol": "http",
 					"host": [
-						"us-central1-citizen-love-dev",
-						"cloudfunctions",
-						"net"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
-						"api",
 						"subscribe"
 					]
 				},
@@ -74,17 +70,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://us-central1-citizen-love-dev.cloudfunctions.net/api/help-request/{{ PRIVATE HELP REQUEST ID }}",
-					"protocol": "https",
+					"raw": "http://localhost:8080/help-request/3333c4ff-4348-4036-9350-16b194fc45aa",
+					"protocol": "http",
 					"host": [
-						"us-central1-citizen-love-dev",
-						"cloudfunctions",
-						"net"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
-						"api",
 						"help-request",
-						"{{ PRIVATE HELP REQUEST ID }}"
+						"3333c4ff-4348-4036-9350-16b194fc45aa"
 					]
 				}
 			},
@@ -97,7 +91,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"status\": \"STRING: ALLOWED VALUES [COMPLETED, STARTED, CANCELLED]\"\n}",
+					"raw": "{\n\t\"status\": \"completed\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -105,17 +99,15 @@
 					}
 				},
 				"url": {
-					"raw": "https://us-central1-citizen-love-dev.cloudfunctions.net/api/help-request/{{ PRIVATE HELP REQUEST ID }}",
-					"protocol": "https",
+					"raw": "http://localhost:8080/help-request/3333c4ff-4348-4036-9350-16b194fc45aa",
+					"protocol": "http",
 					"host": [
-						"us-central1-citizen-love-dev",
-						"cloudfunctions",
-						"net"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
-						"api",
 						"help-request",
-						"{{ PRIVATE HELP REQUEST ID }}"
+						"3333c4ff-4348-4036-9350-16b194fc45aa"
 					]
 				}
 			},
@@ -128,7 +120,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"offerBody\": \"STRING\",\n\t\"email\": \"VALID EMAIL ADDRESS\",\n\t\"phone\": \"STRING\"\n}",
+					"raw": "{\n\t\"offerBody\": \"Hey I want to help as test help\",\n\t\"email\": \"***@***.com\",\n\t\"phone\": \"+48***\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -136,19 +128,51 @@
 					}
 				},
 				"url": {
-					"raw": "https://us-central1-citizen-love-dev.cloudfunctions.net/api/help-offer/{{ PUBLIC HELP REQUEST ID }}",
-					"protocol": "https",
+					"raw": "http://localhost:8080/help-offer/Ym79UJap25eiPGGqbqmo",
+					"protocol": "http",
 					"host": [
-						"us-central1-citizen-love-dev",
-						"cloudfunctions",
-						"net"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
-						"api",
 						"help-offer",
-						"{{ PUBLIC HELP REQUEST ID }}"
+						"Ym79UJap25eiPGGqbqmo"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE-USER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "firebase-idtoken",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"firstName\": \"string\",\n\"lastName\": \"string\",\n\"bio\": \"long long string\",\n\"avatar\": \"url to your best ever pic\",\n\"radius\": 30,\n\"phoneNumber\": \"phone num\",\n\"language\": \"en|de|it|fr\",\n\"coordinates\": \"1,1\",\n\"active\": \"true/false\",\n\"preferences\": \"[sms,email]|[sms]|[email]\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/me",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"me"
+					]
+				},
+				"description": "All body fields are optional"
 			},
 			"response": []
 		}

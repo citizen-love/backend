@@ -39,6 +39,19 @@
     "signature2": "Your team at CitizenLove"
   },
   "sms": {
-    "notifySubscribersOnHelp": "Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details."
+    "notifySubscribersOnHelp": "LANG >> EN: Time to help! Someone in your vicinity needs help! Visit {{helpRequestUrl}} to see details.",
+    "helpRequestConfirmation": "LANG >> EN: We got You covered! Your request is active, see how it looks on {{helpRequestUrl}}",
+    "helpNotification": "LANG >> EN: Hey! Someone offered his/her help. His message:  ",
+    "helpRequestConversation": {
+      "start": "LANG >> EN: Welcome at Citizen! Please choose your language. EN for english, DE for german, FR for french, IT for italian.",
+      "sessionExpired": "LANG >> EN: Ouch..long time no see! Write anything to get started again!",
+      "getLanguageReply": "LANG >> EN: Thanks! Now please tell us, what do You need help with?",
+      "getLanguageErrorReply": "LANG >> EN: Sorry, we dont have this language. Please choose EN for english, DE for german, FR for french or IT for italian",
+      "getTitleReply": "LANG >> EN: Okay. Please describe in more details, what You need.",
+      "getDescriptionReply": "LANG >> EN: Looks good. Please choose from the following categories: SHOPPING, CHILDCARE, LONELYNESS, HEALTH",
+      "getCategoriesReply": "LANG >> EN: Nice. What is your ZIP address? We will notify volunteers in your area.",
+      "getLocationReply": "LANG >> EN: Thanks. Finally, if You want leave your email address.",
+      "getEmailReply": "LANG >> EN: Thats it! Please type YES, to activate your help request!"
+    }
   }
 }

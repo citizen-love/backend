@@ -23,7 +23,9 @@ export const update = (ref, details) => ref.update(details);
 
 export const create = (ref, details) => ref.set(details);
 
+export const deleteDoc = (ref) => ref.delete();
+
 
 export default {
-  get, getQuery, update, create
+  get, getQuery, update, create, deleteDoc
 };
